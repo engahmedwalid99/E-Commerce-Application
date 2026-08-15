@@ -1138,7 +1138,9 @@
                                 </span>
                             @endif
                             @if ($item->image)
-                                <img src="{{ asset('storage/' . $item->image) }}" alt="{{ $item->name }}">
+                                <div style="overflow: hidden">
+                                    <img style="height: 250px" src="{{ asset('storage/' . $item->image) }}" alt="{{ $item->name }}">
+                                </div>
                             @else
                                 <svg viewBox="0 0 24 24" fill="none" stroke="#B8912B" stroke-width="1.4">
                                     <rect x="3" y="8" width="18" height="12" rx="2" />
