@@ -51,6 +51,7 @@ class OrderController
                 'phone' => $request->phone,
                 'address' => $request->address,
                 'city' => $request->city,
+                'subtotal' => $request->subtotal,
                 'notes' => $request->notes,
                 'total' => $total,
                 'status' => 'pending',
@@ -87,7 +88,6 @@ class OrderController
                     'product_name' => $product->name,
                     'price' => $item['price'],
                     'quantity' => $item['quantity'],
-                    'subtotal' => $item['subtotal'],
                     'total' => $item['price'] * $item['quantity'],
                 ]);
 
