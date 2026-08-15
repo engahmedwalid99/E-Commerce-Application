@@ -251,23 +251,23 @@
             <div class="border-t border-white/10 p-4">
 
 
-                <a href="{{ route('logout') }}">
-                    <button type="submit"
-                        class="group flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-slate-400 transition hover:bg-red-500/10 hover:text-red-400">
+                <form action="{{ route('logout') }}" method="POST">
 
-                        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="1.8">
+                            @csrf
 
-                            <path d="M10 17l5-5-5-5" />
-                            <path d="M15 12H3" />
-                            <path d="M21 19V5a2 2 0 0 0-2-2h-6" />
+                            <button type="submit"
+                                class="flex w-full items-center gap-3 rounded-xl px-3 py-3 text-sm text-red-600 transition hover:bg-red-50">
+                                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="1.7">
+                                    <path d="M10 17l5-5-5-5" />
+                                    <path d="M15 12H3" />
+                                    <path d="M21 19V5a2 2 0 0 0-2-2h-6" />
+                                </svg>
 
-                        </svg>
+                                تسجيل الخروج
+                            </button>
 
-                        تسجيل الخروج
-
-                    </button>
-                </a>
+                        </form>
 
 
             </div>
