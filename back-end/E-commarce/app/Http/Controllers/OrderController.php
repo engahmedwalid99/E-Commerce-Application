@@ -87,6 +87,7 @@ class OrderController
                     'product_name' => $product->name,
                     'price' => $item['price'],
                     'quantity' => $item['quantity'],
+                    'subtotal' => $item['subtotal'],
                     'total' => $item['price'] * $item['quantity'],
                 ]);
 
