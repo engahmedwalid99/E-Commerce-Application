@@ -19,6 +19,7 @@ return Application::configure(basePath: dirname(__DIR__))
             'role' => chechRole::class,
             'user-blocked' => blockedUser::class,
         ]);
+        $middleware->trustProxies(at: '*');
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //
