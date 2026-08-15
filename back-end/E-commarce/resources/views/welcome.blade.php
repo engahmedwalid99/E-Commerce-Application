@@ -1137,10 +1137,14 @@
                                     {{ round((($item->price - $item->sale_price) / $item->price) * 100) }}%
                                 </span>
                             @endif
-                            <svg viewBox="0 0 24 24" fill="none" stroke="#B8912B" stroke-width="1.4">
-                                <rect x="3" y="8" width="18" height="12" rx="2" />
-                                <path d="M8 8V6a4 4 0 0 1 8 0v2" />
-                            </svg>
+                            @if ($item->image)
+                                <img src="{{ asset('storage/' . $item->image) }}" alt="{{ $item->name }}">
+                            @else
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#B8912B" stroke-width="1.4">
+                                    <rect x="3" y="8" width="18" height="12" rx="2" />
+                                    <path d="M8 8V6a4 4 0 0 1 8 0v2" />
+                                </svg>
+                            @endif
                         </div>
                         <div class="prod-body">
                             <div class="prod-cat">{{ $item->category_id }}</div>
