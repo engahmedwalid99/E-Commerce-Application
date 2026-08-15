@@ -979,8 +979,8 @@
     <x-navbar />
 
     <section class="hero">
-        <div class="hero-inner container">
-            <div>
+        <div class="hero-inner container" style="grid-template-columns: 1fr; text-align: center; justify-items: center;">
+            <div style="display:flex; flex-direction:column; align-items:center;">
                 <span class="hero-eyebrow">
                     ✦ اختار اللي يناسبك
                 </span>
@@ -990,7 +990,7 @@
                     <span>في مكان واحد</span>
                 </h1>
 
-                <p>
+                <p style="margin-left:auto; margin-right:auto; text-align:center;">
                     تصفّح مجموعة متنوعة من المنتجات، قارن الأسعار،
                     واختار اللي يناسبك بكل سهولة.
                 </p>
@@ -1182,91 +1182,6 @@
                 <span class="eyebrow">مجموعة جديدة</span>
                 <h3>تشكيلة الأزياء لموسم الخريف</h3>
                 <p>قطع مختارة بعناية تناسب كل الأذواق والمناسبات.</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="testi-strip">
-        <div class="container section">
-            <div class="section-head" style="margin-bottom:30px;">
-                <div>
-                    <span class="eyebrow">تقييمات حقيقية</span>
-                    <h2 style="color:#fff;">ماذا يقول عملاؤنا</h2>
-                </div>
-            </div>
-            <div class="testi-grid">
-                <div class="testi-card">
-                    <div class="testi-stars">
-                        <svg viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1L12 2Z" />
-                        </svg>
-                        <svg viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1L12 2Z" />
-                        </svg>
-                        <svg viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1L12 2Z" />
-                        </svg>
-                        <svg viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1L12 2Z" />
-                        </svg>
-                        <svg viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1L12 2Z" />
-                        </svg>
-                    </div>
-                    <p>الشحن كان أسرع مما توقعت، والمنتج مطابق تمامًا للوصف. تجربة تسوق ممتازة من البداية للنهاية.</p>
-                    <div class="testi-who">
-                        <div class="av">س</div>
-                        <div><b>سارة العتيبي</b><span>عميلة موثقة</span></div>
-                    </div>
-                </div>
-                <div class="testi-card">
-                    <div class="testi-stars">
-                        <svg viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1L12 2Z" />
-                        </svg>
-                        <svg viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1L12 2Z" />
-                        </svg>
-                        <svg viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1L12 2Z" />
-                        </svg>
-                        <svg viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1L12 2Z" />
-                        </svg>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1L12 2Z" />
-                        </svg>
-                    </div>
-                    <p>خدمة العملاء متعاونة جدًا وساعدوني في استبدال مقاس المنتج بسهولة. أنصح بالتعامل معهم.</p>
-                    <div class="testi-who">
-                        <div class="av">م</div>
-                        <div><b>محمد الحربي</b><span>عميل موثق</span></div>
-                    </div>
-                </div>
-                <div class="testi-card">
-                    <div class="testi-stars">
-                        <svg viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1L12 2Z" />
-                        </svg>
-                        <svg viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1L12 2Z" />
-                        </svg>
-                        <svg viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1L12 2Z" />
-                        </svg>
-                        <svg viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1L12 2Z" />
-                        </svg>
-                        <svg viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1L12 2Z" />
-                        </svg>
-                    </div>
-                    <p>جودة المنتجات فاقت توقعاتي، والتغليف كان أنيقًا جدًا. أصبح متجري المفضل للتسوق أونلاين.</p>
-                    <div class="testi-who">
-                        <div class="av">ن</div>
-                        <div><b>نورة القحطاني</b><span>عميلة موثقة</span></div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
