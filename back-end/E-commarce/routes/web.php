@@ -65,6 +65,8 @@ Route::middleware(['auth', 'status'])->group(function () {
     
     Route::post('subscript', [newsSubscribeController::class ,'subscribe'])->name('subscribe');
 
+    Route::get('all-notification', [showNotificationController::class, '__invoke'])->name('all_notification');
+    
     Route::prefix('user')->group(function () {
 
         Route::get('/profile', function () {
@@ -101,7 +103,6 @@ Route::middleware(['auth', 'status'])->group(function () {
         Route::get('add-notification', [dashboardController::class, 'view_notification'])->name('view_add_notification');
         Route::get('notifications-control', [dashboardController::class, 'admin_notification'])->name('adminNotification');
         Route::post('notifications', [sendNoteToUserController::class, '__invoke'])->name('send_notifications');
-        Route::get('all-notification', [showNotificationController::class, '__invoke'])->name('all_notification');
 
         Route::delete('delete-notification/{id}', [deleteNotofication::class, '__invoke'])->name('delete_notification');
         Route::get('update-notification/{id}', [updateNotofication::class, 'show'])->name('show_update_notification');
