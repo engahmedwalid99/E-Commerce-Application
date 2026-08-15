@@ -11,9 +11,10 @@ class checkStatus
 {
     public function handle(Request $request, Closure $next): Response
     {
-        if(Auth::user()->status == 0) {
+        if (Auth::check() && Auth::user()->status == 0) {
             return redirect()->route('blocked-user');
         }
+
         return $next($request);
     }
 }
