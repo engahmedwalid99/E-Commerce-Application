@@ -28,87 +28,84 @@ class OrderController
     public function store(checkoutRequest $request)
     {
         $cart = session()->get('cart', []);
-
+    
         if (empty($cart)) {
             return redirect()
                 ->route('cart')
                 ->with('error', 'السلة فارغة.');
         }
-
+    
         DB::transaction(function () use ($request, $cart) {
-
-            $total = 0;
-
-
+    
+            $subtotal = 0;
+    
             foreach ($cart as $item) {
-                $total += $item['price'] * $item['quantity'];
+                $subtotal += $item['price'] * $item['quantity'];
             }
-
-
+    
+            $shipping = 0;
+    
+            $total = $subtotal + $shipping;
+    
             $order = Order::create([
                 'user_id' => Auth::id(),
                 'name' => $request->name,
                 'phone' => $request->phone,
                 'address' => $request->address,
                 'city' => $request->city,
-                'subtotal' => $request->subtotal,
                 'notes' => $request->notes,
+    
+                'subtotal' => $subtotal,
                 'total' => $total,
+    
                 'status' => 'pending',
             ]);
-
-
-
+    
             foreach ($cart as $id => $item) {
-
-
+    
                 $product = Product::where('id', $id)
                     ->lockForUpdate()
                     ->first();
-
+    
                 if (!$product) {
                     throw new \Exception(
                         'المنتج غير موجود.'
                     );
                 }
-
-
+    
                 if ($product->stock < $item['quantity']) {
-
                     throw new \Exception(
                         "الكمية المطلوبة من {$product->name} غير متوفرة."
                     );
                 }
-
- 
-
+    
+                $itemSubtotal = $item['price'] * $item['quantity'];
+    
                 OrderItem::create([
                     'order_id' => $order->id,
                     'product_id' => $product->id,
                     'product_name' => $product->name,
                     'price' => $item['price'],
                     'quantity' => $item['quantity'],
-                    'total' => $item['price'] * $item['quantity'],
+                    'subtotal' => $itemSubtotal,
+                    'total' => $itemSubtotal,
                 ]);
-
-
-
+    
                 $product->decrement(
                     'stock',
                     $item['quantity']
                 );
             }
         });
-
-   
+    
         session()->forget('cart');
-
+    
         return redirect()
             ->route('orders.index')
             ->with(
                 'success',
                 'تم إنشاء الطلب بنجاح.'
-            );
+        );
     }
 
     public function index()
