@@ -22,7 +22,7 @@ class OrderController
                 ->with('error', 'السلة فارغة.');
         }
 
-        return view('orders.checkout', compact('cart'));
+        return view('Orders.checkout', compact('cart'));
     }
 
     public function store(checkoutRequest $request)
