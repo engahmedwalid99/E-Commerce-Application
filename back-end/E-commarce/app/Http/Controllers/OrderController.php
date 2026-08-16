@@ -88,7 +88,6 @@ class OrderController
                     'price' => $item['price'],
                     'quantity' => $item['quantity'],
                     'subtotal' => $subtotal,
-                    'total' => $subtotal,
                 ]);
     
                 $product->decrement(
