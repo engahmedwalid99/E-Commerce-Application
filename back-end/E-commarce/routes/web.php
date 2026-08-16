@@ -1,9 +1,6 @@
 <?php
 
 use App\Http\Controllers\Admin\OrderController as AdminOrderController;
-use App\Http\Controllers\Notifications\deleteNotofication;
-use App\Http\Controllers\Notifications\showNotificationController;
-use App\Http\Controllers\Notifications\updateNotofication;
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CartController;
@@ -19,9 +16,12 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\dashboardController;
 use App\Http\Controllers\User\blockedUserController;
 use App\Http\Controllers\News\newsSubscribeController;
+use App\Http\Controllers\Notifications\deleteNotofication;
 use App\Http\Controllers\profile\updatePasswordController;
+use App\Http\Controllers\Notifications\updateNotofication;
 use App\Http\Controllers\profile\updateProfileDataController;
 use App\Http\Controllers\Notifications\sendNoteToUserController;
+use App\Http\Controllers\Notifications\showNotificationController;
 
 // Home
 Route::get('/', function () {
@@ -117,9 +117,9 @@ Route::view('/shipping', 'Pages.shipping')->name('shipping')->middleware('status
 
 Route::view('/faq', 'Pages.faq')->name('faq')->middleware('status');
 
-Route::view('/terms', 'pages.terms')->name('terms')->middleware('status');
+Route::view('/terms', 'Pages.terms')->name('terms')->middleware('status');
 
-Route::view('/privacy-policy', 'pages.privacy')->name('privacy')->middleware('status');
+Route::view('/privacy-policy', 'Pages.privacy')->name('privacy')->middleware('status');
 
 Route::fallback(function () {
     return view('404');
