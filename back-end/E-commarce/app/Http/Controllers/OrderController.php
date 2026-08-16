@@ -79,16 +79,16 @@ class OrderController
                     );
                 }
     
-                $itemSubtotal = $item['price'] * $item['quantity'];
-    
+                $subtotal = $item['price'] * $item['quantity'];
+
                 OrderItem::create([
                     'order_id' => $order->id,
                     'product_id' => $product->id,
                     'product_name' => $product->name,
                     'price' => $item['price'],
                     'quantity' => $item['quantity'],
-                    'subtotal' => $itemSubtotal,
-                    'total' => $itemSubtotal,
+                    'subtotal' => $subtotal,
+                    'total' => $subtotal,
                 ]);
     
                 $product->decrement(
