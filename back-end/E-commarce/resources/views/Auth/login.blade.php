@@ -534,7 +534,7 @@
                     <a href="{{ route('register') }}">أنشئ حسابًا</a>
                 </p>
 
-                @if (session('error'))
+                @error('error)
                     <div
                         class="mb-5 flex items-center gap-3 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm font-semibold text-red-700">
 
@@ -550,8 +550,8 @@
                             {{ session('error') }}
                         </span>
                     </div>
-                @endif
-
+                @enderror
+                    
                 <form method="POST" action="{{ route('login.post') }}">
                     @csrf
                     <div class="field">
