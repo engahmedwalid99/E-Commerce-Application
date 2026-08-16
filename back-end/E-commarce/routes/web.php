@@ -99,6 +99,7 @@ Route::middleware(['auth', 'status'])->group(function () {
         Route::delete('delete_user/{id}', [dashboardController::class, 'delete_user'])->name('delete_user');
         Route::post('active-user/{id}', [dashboardController::class,'active_user'])->name('active-user');
         Route::post('block-user/{id}', [dashboardController::class,'block_user'])->name('block-user');
+        Route::patch('/update-user-role/{id}',[dashboardController::class, 'updateRole'])->name('update-user-role');
 
         Route::get('add-notification', [dashboardController::class, 'view_notification'])->name('view_add_notification');
         Route::get('notifications-control', [dashboardController::class, 'admin_notification'])->name('adminNotification');
