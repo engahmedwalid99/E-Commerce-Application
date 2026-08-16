@@ -15,9 +15,7 @@ return new class extends Migration
             $table->foreignId('order_id')
                 ->constrained()
                 ->cascadeOnDelete();
-
-            $table->dropForeign(['product_id']);
-
+            
             $table->foreign('product_id')
                 ->references('id')
                 ->on('products')
