@@ -48,7 +48,7 @@
 
     <x-navbar />
 
-    <section class="relative overflow-hidden text-white bg-[radial-gradient(circle_at_75%_20%,#1B2140,#12162B_65%)]">
+    <section class="relative overflow-hidden text-white bg-[radial-gradient(circle_at_75%_20%,#1B2140,#12162B_65%)]" style="height: 100vh">
         <div class="absolute inset-0 diamonds-bg"></div>
         <div class="container relative z-10 mx-auto max-w-[1240px] px-4 sm:px-6 py-16 sm:py-20 md:py-24">
             <div class="flex flex-col items-center text-center gap-5 max-w-2xl mx-auto">
