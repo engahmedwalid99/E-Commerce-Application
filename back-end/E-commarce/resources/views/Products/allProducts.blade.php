@@ -159,7 +159,7 @@
                     {{ env('APP_NAME') }}
                 </p>
 
-                <h1 class="text-4xl font-bold text-[#172033]" style="font-family: 'Cairo', sans-serif">
+                <h1 class="text-4xl font-bold text-[#172033] mt-1" style="font-family: 'Cairo', sans-serif">
                     جميع المنتجات
                 </h1>
 
@@ -171,6 +171,8 @@
         </div>
 
     </section>
+
+    <hr/>
 
 
 
