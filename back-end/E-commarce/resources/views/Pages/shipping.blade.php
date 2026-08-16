@@ -25,7 +25,6 @@
 
     <main class="max-w-6xl mx-auto px-4 py-12">
 
-        {{-- Hero --}}
         <div class="bg-[#172033] rounded-3xl overflow-hidden mb-10">
 
             <div class="grid md:grid-cols-2 items-center">
@@ -62,7 +61,6 @@
                 </div>
 
 
-                {{-- Truck SVG --}}
                 <div class="hidden md:flex justify-center items-center p-10">
 
                     <svg class="w-64 h-64 text-blue-400"
@@ -99,12 +97,10 @@
         </div>
 
 
-        {{-- Shipping Information --}}
 
         <div class="grid md:grid-cols-2 gap-6">
 
 
-            {{-- طريقة الشحن --}}
             <div class="bg-white rounded-2xl p-7 shadow-sm border border-gray-100
                         hover:shadow-lg transition duration-300">
 
@@ -143,7 +139,6 @@
             </div>
 
 
-            {{-- مدة التوصيل --}}
             <div class="bg-white rounded-2xl p-7 shadow-sm border border-gray-100
                         hover:shadow-lg transition duration-300">
 
@@ -178,7 +173,6 @@
             </div>
 
 
-            {{-- متابعة الطلب --}}
             <div class="bg-white rounded-2xl p-7 shadow-sm border border-gray-100
                         hover:shadow-lg transition duration-300">
 
@@ -215,7 +209,6 @@
             </div>
 
 
-            {{-- تكلفة الشحن --}}
             <div class="bg-white rounded-2xl p-7 shadow-sm border border-gray-100
                         hover:shadow-lg transition duration-300">
 
@@ -249,7 +242,6 @@
             </div>
 
 
-            {{-- تأخير الطلب --}}
             <div class="bg-white rounded-2xl p-7 shadow-sm border border-gray-100
                         hover:shadow-lg transition duration-300 md:col-span-2">
 
@@ -303,7 +295,6 @@
         </div>
 
 
-        {{-- CTA --}}
 
         <div class="mt-10 bg-blue-600 rounded-2xl p-8 text-center text-white">
 
