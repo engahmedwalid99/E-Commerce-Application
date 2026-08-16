@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تسجيل الدخول</title>
+    <title>تسجيل الدخول | {{ env('APP_NAME') }}</title>
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <script src="https://cdn.tailwindcss.com"></script>
