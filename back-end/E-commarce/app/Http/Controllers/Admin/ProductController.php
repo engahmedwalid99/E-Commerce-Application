@@ -7,7 +7,7 @@ use App\Http\Requests\Admin\ProductRequest;
 use App\Models\Product;
 use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 
-class ProductController extends Controller
+class ProductController 
 {
     public function addProduct()
     {
