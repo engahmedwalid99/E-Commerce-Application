@@ -65,6 +65,10 @@
                             الحالة
                         </th>
 
+                        <th class="whitespace-nowrap px-3 py-3 text-[11.5px] font-extrabold uppercase tracking-wide text-muted">
+                            الصلاحية
+                        </th>
+
                         <th
                             class="whitespace-nowrap px-5 py-3 text-[11.5px] font-extrabold uppercase tracking-wide text-muted sm:px-6">
                             الإجراءات
@@ -197,6 +201,60 @@
 
                                 @endif
 
+                            </td>
+
+                            <td class="whitespace-nowrap px-3 py-3.5">
+
+                                @if ($user->email == env('OWNER'))
+                            
+                                    <span
+                                        class="inline-flex items-center gap-1 rounded-lg bg-amber-50 px-2.5 py-1 text-[11px] font-extrabold text-amber-700">
+                            
+                                        <svg
+                                            class="h-3.5 w-3.5"
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            stroke-width="1.8">
+                            
+                                            <path d="M12 3l7 4v5c0 4.5-3 7-7 9-4-2-7-4.5-7-9V7l7-4Z" />
+                            
+                                            <path d="m9 12 2 2 4-4" />
+                            
+                                        </svg>
+                            
+                                        OWNER
+                            
+                                    </span>
+                            
+                                @else
+                            
+                                    <form
+                                        action="{{ route('update-user-role', $user->id) }}"
+                                        method="POST">
+                            
+                                        @csrf
+                                        @method('PATCH')
+                            
+                                        <select
+                                            name="role"
+                                            onchange="this.form.submit()"
+                                            class="rounded-lg border border-line bg-white px-2.5 py-1.5 text-[11px] font-bold text-gray-700 outline-none transition focus:border-gold focus:ring-1 focus:ring-gold">
+                            
+                                            <option value="user" {{ $user->role === 'user' ? 'selected' : '' }}>
+                                                User
+                                            </option>
+                            
+                                            <option value="admin" {{ $user->role === 'admin' ? 'selected' : '' }}>
+                                                Admin
+                                            </option>
+                            
+                                        </select>
+                            
+                                    </form>
+                            
+                                @endif
+                            
                             </td>
 
 
