@@ -110,15 +110,15 @@ Route::middleware(['auth', 'status'])->group(function () {
     });
 });
 
-Route::view('/return-policy', 'Pages.return-policy')->name('return.policy')->middleware('status');;
+Route::view('/return-policy', 'Pages.return-policy')->name('return.policy')->middleware('status');
 
-Route::view('/shipping', 'Pages.shipping')->name('shipping')->middleware('status');;
+Route::view('/shipping', 'Pages.shipping')->name('shipping')->middleware('status');
 
-Route::view('/faq', 'Pages.faq')->name('faq')->middleware('status');;
+Route::view('/faq', 'Pages.faq')->name('faq')->middleware('status');
 
-Route::view('/terms', 'pages.terms')->name('terms')->middleware('status');;
+Route::view('/terms', 'pages.terms')->name('terms')->middleware('status');
 
-Route::view('/privacy-policy', 'pages.privacy')->name('privacy')->middleware('status');;
+Route::view('/privacy-policy', 'pages.privacy')->name('privacy')->middleware('status');
 
 Route::fallback(function () {
     return view('404');
