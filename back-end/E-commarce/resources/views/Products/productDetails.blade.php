@@ -80,8 +80,7 @@
                 <div class="flex min-h-[450px] items-center justify-center bg-[#f7f5ef] p-8">
 
                     @if ($product->image)
-                        <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}"
-                            class="max-h-[420px] max-w-full rounded-2xl object-contain">
+                        <img src="{{ $product->image }}" alt="{{ $product->name }}">
                     @else
                         <div class="flex h-80 w-80 items-center justify-center rounded-2xl bg-gray-100 text-gray-400">
                             لا توجد صورة
