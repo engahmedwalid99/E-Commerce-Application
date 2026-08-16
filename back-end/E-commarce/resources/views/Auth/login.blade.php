@@ -574,7 +574,10 @@
 
                     <label class="terms">
                         <input type="checkbox" name="terms">
-                        <span>أوافق على <a href="{{ route('terms') }}">شروط الاستخدام</a> و <a href="{{ route('privacy') }}">سياسة الخصوصية</a></span>
+                        <span>
+                            أوافق على <a href="{{ route('terms') }}">شروط الاستخدام</a> 
+                            و <a href="{{ route('privacy') }}">سياسة الخصوصية</a>
+                        </span>
                     </label>
 
                     <div class="field">
