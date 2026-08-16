@@ -175,7 +175,7 @@
                                 <path d="M4 16v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3" />
                             </svg>
                             <b class="block text-[13px]">اسحب الصور هنا أو اضغط للرفع</b>
-                            <input type="file" name="image" value="{{ old('file') }}">
+                            <input type="file" name="image" accept="image/png,image/jpeg,image/webp">
                             <span class="text-[11.5px] text-muted">PNG، JPG حتى 5MB لكل صورة</span>
                         </div>
                         @error('image')
