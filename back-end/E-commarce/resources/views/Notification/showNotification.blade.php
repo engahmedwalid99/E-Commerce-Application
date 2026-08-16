@@ -115,6 +115,10 @@
                 </div>
             @endforelse
 
+            @if (method_exists($notifications, 'links'))
+                    <span class="flex gap-1" style="width: 100%; display: flex;justify-content: end; align-items: center;">{{ $notifications->links() }}</span>
+            @endif
+
         </div>
 
     </div>
