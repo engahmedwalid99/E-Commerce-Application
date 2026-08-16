@@ -300,20 +300,34 @@
                 </div>
             @endif
         @else
-            <div class="rounded-2xl border border-[#eee8da] bg-white py-20 text-center">
+            <div class="rounded-2xl border border-[#eee8da] bg-white px-6 py-20 text-center">
 
-                <div class="text-5xl">
-                    🛍️
+                <div class="mx-auto flex h-20 w-20 items-center justify-center rounded-2xl bg-[#faf7ef]">
+                    <svg
+                        class="h-10 w-10 text-[#b58b3a]"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        stroke="currentColor"
+                        stroke-width="1.6"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    >
+                        <path d="M6.5 8.5h11l1.1 11H5.4l1.1-11Z" />
+                        <path d="M9 8.5V6.8a3 3 0 0 1 6 0v1.7" />
+                        <path d="M9.5 12.5v.01" />
+                        <path d="M14.5 12.5v.01" />
+                    </svg>
                 </div>
-
-                <h2 class="mt-5 text-xl font-bold text-[#172033]">
+            
+                <h2 class="mt-6 text-xl font-extrabold text-[#172033]">
                     لا توجد منتجات
                 </h2>
-
-                <p class="mt-2 text-sm text-gray-500">
+            
+                <p class="mx-auto mt-2 max-w-sm text-sm leading-6 text-gray-500">
                     لم يتم إضافة أي منتجات حتى الآن.
                 </p>
-
+            
             </div>
 
         @endif
