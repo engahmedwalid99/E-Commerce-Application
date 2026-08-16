@@ -448,18 +448,6 @@
 
                         </div>
 
-                        <div class="min-w-0 flex-1">
-
-                            <p class="text-sm font-black text-gray-900">
-                                حدث خطأ
-                            </p>
-
-                            <p class="mt-1 text-xs leading-5 text-gray-500">
-                                {{ session('error') }}
-                            </p>
-
-                        </div>
-
                         <button type="button" onclick="this.parentElement.remove()"
                             class="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg text-gray-400 transition hover:bg-gray-100 hover:text-gray-700">
 
@@ -490,18 +478,6 @@
                                 <path d="M20 6 9 17l-5-5" />
 
                             </svg>
-
-                        </div>
-
-                        <div class="min-w-0 flex-1">
-
-                            <p class="text-sm font-black text-gray-900">
-                                تمت العملية بنجاح
-                            </p>
-
-                            <p class="mt-1 text-xs leading-5 text-gray-500">
-                                {{ session('success') }}
-                            </p>
 
                         </div>
 
