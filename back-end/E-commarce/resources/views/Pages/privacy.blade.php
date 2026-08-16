@@ -27,7 +27,6 @@
 
         <div class="bg-white rounded-2xl shadow-sm overflow-hidden">
 
-            <!-- Header -->
             <div class="bg-[#172033] text-white p-8 md:p-10">
 
                 <div class="flex items-center gap-4">
@@ -63,8 +62,6 @@
 
             </div>
 
-
-            <!-- Content -->
             <div class="p-6 md:p-10 space-y-10">
 
                 <section>
