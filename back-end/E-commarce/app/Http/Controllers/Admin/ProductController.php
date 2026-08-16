@@ -7,7 +7,7 @@ use App\Http\Requests\Admin\ProductRequest;
 use App\Models\Product;
 use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 
-class ProductController 
+class ProductController extends Controller
 {
     public function addProduct()
     {
@@ -22,12 +22,12 @@ class ProductController
 
         if ($request->hasFile('image')) {
 
-            // $imageUrl = Cloudinary::upload(
-            //     $request->file('image')->getRealPath(),
-            //     [
-            //         'folder' => 'ecommerce/products',
-            //     ]
-            // )->getSecurePath();
+            $imageUrl = Cloudinary::upload(
+                $request->file('image')->getRealPath(),
+                [
+                    'folder' => 'ecommerce/products',
+                ]
+            )->getSecurePath();
         }
 
         Product::create([
