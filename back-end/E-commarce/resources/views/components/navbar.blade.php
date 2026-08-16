@@ -357,7 +357,7 @@
                 </a>
 
 
-                <a href="{{croute('contact') }}"
+                <a href="{{ route('contact') }}"
                     class="flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold text-gray-600 transition hover:bg-gray-100 hover:text-gray-900">
 
                     <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"
