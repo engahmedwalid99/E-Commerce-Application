@@ -534,23 +534,22 @@
                     <a href="{{ route('register') }}">أنشئ حسابًا</a>
                 </p>
 
-                @session('error)
+                @if (session('error'))
                     <div
                         class="mb-5 flex items-center gap-3 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm font-semibold text-red-700">
-
+                
                         <svg class="h-5 w-5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2">
-
                             <circle cx="12" cy="12" r="9" />
                             <path d="M12 8v4" />
                             <path d="M12 16h.01" />
-
                         </svg>
+                
                         <span>
                             {{ session('error') }}
                         </span>
                     </div>
-                @session
+                @endif
                     
                 <form method="POST" action="{{ route('login.post') }}">
                     @csrf
