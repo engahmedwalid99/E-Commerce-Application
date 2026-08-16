@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\ProductRequest;
 use App\Models\Product;
-use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
+// use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 
 class ProductController 
 {
@@ -20,15 +20,15 @@ class ProductController
 
         $imageUrl = null;
 
-        if ($request->hasFile('image')) {
+        // if ($request->hasFile('image')) {
 
-            $imageUrl = Cloudinary::upload(
-                $request->file('image')->getRealPath(),
-                [
-                    'folder' => 'ecommerce/products',
-                ]
-            )->getSecurePath();
-        }
+        //     // $imageUrl = Cloudinary::upload(
+        //     //     $request->file('image')->getRealPath(),
+        //     //     [
+        //     //         'folder' => 'ecommerce/products',
+        //     //     ]
+        //     // )->getSecurePath();
+        // }
 
         Product::create([
             'name' => trim($data['name']),
@@ -55,7 +55,7 @@ class ProductController
 
             'is_featured' => $data['is_featured'],
 
-            'image' => $imageUrl,
+            // 'image' => $imageUrl,
         ]);
 
         return redirect()
