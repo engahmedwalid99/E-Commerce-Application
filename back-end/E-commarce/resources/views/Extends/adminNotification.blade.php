@@ -89,11 +89,6 @@
 
                 </div>
 
-                @if (method_exists($notifications, 'links'))
-                    <span class="flex gap-1"
-                        style="width: 100%; display: flex;justify-content: end; align-items: center;">{{ $notifications->links() }}</span>
-                @endif
-
             @empty
 
                 <div class="rounded-2xl border border-dashed border-white/10 bg-white/[0.02] px-6 py-16 text-center">
@@ -120,6 +115,11 @@
 
                 </div>
             @endforelse
+
+            @if (method_exists($notifications, 'links'))
+                    <span class="flex gap-1"
+                        style="width: 100%; display: flex;justify-content: end; align-items: center;">{{ $notifications->links() }}</span>
+            @endif
 
         </div>
 
