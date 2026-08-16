@@ -155,32 +155,19 @@
 
             <div>
 
-                <p class="mb-2 text-sm font-bold text-[#b8912b]">
+                <p class="mb-2 text-l font-bold text-[#b8912b]" style="font-family: 'Cairo', sans-serif">
                     {{ env('APP_NAME') }}
                 </p>
 
-                <h1 class="text-4xl font-bold text-[#172033]">
+                <h1 class="text-4xl font-bold text-[#172033]" style="font-family: 'Cairo', sans-serif">
                     جميع المنتجات
                 </h1>
 
-                <p class="mt-3 text-sm text-gray-500">
+                <p class="mt-3 text-sm text-gray-500" style="font-family: 'Cairo', sans-serif">
                     اكتشف أحدث المنتجات والعروض المتاحة لدينا
                 </p>
 
             </div>
-
-
-            <div class="relative w-full md:w-80">
-
-                <input type="text" placeholder="ابحث عن منتج..."
-                    class="h-12 w-full rounded-xl border border-[#e8e1d2] bg-white px-5 text-sm outline-none focus:border-[#b8912b]">
-
-                <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
-                    🔍
-                </span>
-
-            </div>
-
         </div>
 
     </section>
@@ -193,7 +180,7 @@
 
             <div class="mb-6 flex items-center justify-between">
 
-                <p class="text-sm text-gray-500">
+                <p class="text-sm text-gray-500" style="font-family: 'Cairo', sans-serif">
                     عدد المنتجات:
                     <strong class="text-[#172033]">
                         {{ $products->count() }}
