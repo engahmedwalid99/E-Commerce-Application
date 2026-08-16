@@ -7,6 +7,7 @@ use App\Models\Order;
 use App\Models\Product;
 use App\Models\User;
 use Carbon\Carbon;
+use Illuminate\Http\Request;
 
 
 class dashboardController
@@ -72,6 +73,25 @@ class dashboardController
             'status'=> 0,
         ]);
         return redirect()->route('view.users')->with('success','تم حظر ألمستخدم بنجاح');
+    }
+
+    public function updateRole(Request $request, $id)
+    {
+        $user = User::findOrFail($id);
+
+        if ($user->email === env('OWNER')) {
+            return back()->with('error', 'لا يمكن تغيير صلاحية مالك النظام.');
+        }
+    
+        $request->validate([
+            'role' => ['required', 'in:user,admin'],
+        ]);
+    
+        $user->update([
+            'role' => $request->role,
+        ]);
+    
+        return back()->with('success', 'تم تحديث صلاحية المستخدم بنجاح.');
     }
 
     public function view_notification(){
