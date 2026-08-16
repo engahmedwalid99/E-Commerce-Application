@@ -118,6 +118,8 @@ class ProductController extends Controller
 
             'sku' => trim($data['sku']),
 
+            'category_id' => $data['category_id'],
+
             'status' => $data['status'],
 
             'is_featured' => $data['is_featured'],
