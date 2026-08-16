@@ -1139,7 +1139,7 @@
                             @endif
                             @if ($item->image)
                                 <div style="overflow: hidden">
-                                    <img src="{{ $product->image }}" alt="{{ $product->name }}">
+                                    <img src="{{ $item->image }}" alt="{{ $item->name }}">
                                 </div>
                             @else
                                 <svg viewBox="0 0 24 24" fill="none" stroke="#B8912B" stroke-width="1.4">
