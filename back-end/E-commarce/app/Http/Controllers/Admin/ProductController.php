@@ -5,8 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\ProductRequest;
 use App\Models\Product;
+use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 
-class ProductController 
+class ProductController extends Controller
 {
     public function addProduct()
     {
@@ -16,10 +17,17 @@ class ProductController
     public function store(ProductRequest $request)
     {
         $data = $request->validated();
+
+        $imageUrl = null;
+
         if ($request->hasFile('image')) {
-            $data['image'] = $request
-                ->file('image')
-                ->store('products', 'public');
+
+            $imageUrl = Cloudinary::upload(
+                $request->file('image')->getRealPath(),
+                [
+                    'folder' => 'ecommerce/products',
+                ]
+            )->getSecurePath();
         }
 
         Product::create([
@@ -47,7 +55,7 @@ class ProductController
 
             'is_featured' => $data['is_featured'],
 
-            'image' => $data['image'] ?? null,
+            'image' => $imageUrl,
         ]);
 
         return redirect()
@@ -55,14 +63,22 @@ class ProductController
             ->with('success', 'تم إضافة المنتج بنجاح');
     }
 
-    public function show_products(){
+    public function show_products()
+    {
         $products = Product::paginate(10);
-        return view('Extends.showProducts', ['products' => $products]);
+
+        return view('Extends.showProducts', [
+            'products' => $products
+        ]);
     }
 
-    public function show_update_product($id){
-        $product = Product::find($id);
-        return view('Extends.updateProduct', ['product' => $product]); 
+    public function show_update_product($id)
+    {
+        $product = Product::findOrFail($id);
+
+        return view('Extends.updateProduct', [
+            'product' => $product
+        ]);
     }
 
     public function update_product(ProductRequest $request, $id)
@@ -71,11 +87,16 @@ class ProductController
 
         $product = Product::findOrFail($id);
 
+        $imageUrl = $product->image;
+
         if ($request->hasFile('image')) {
 
-            $data['image'] = $request
-                ->file('image')
-                ->store('products', 'public');
+            $imageUrl = Cloudinary::upload(
+                $request->file('image')->getRealPath(),
+                [
+                    'folder' => 'ecommerce/products',
+                ]
+            )->getSecurePath();
         }
 
         $product->update([
@@ -101,7 +122,7 @@ class ProductController
 
             'is_featured' => $data['is_featured'],
 
-            'image' => $data['image'] ?? $product->image,
+            'image' => $imageUrl,
         ]);
 
         return redirect()
@@ -120,13 +141,21 @@ class ProductController
             ->with('success', 'تم حذف المنتج بنجاح');
     }
 
-    public function product_details($id){
+    public function product_details($id)
+    {
         $product = Product::findOrFail($id);
-        return view('Products.productDetails', ['product'=> $product]);
+
+        return view('Products.productDetails', [
+            'product' => $product
+        ]);
     }
 
-    public function all_products(){
+    public function all_products()
+    {
         $all_products = Product::paginate(10);
-        return view('Products.allProducts', ['products'=> $all_products]);
+
+        return view('Products.allProducts', [
+            'products' => $all_products
+        ]);
     }
 }
