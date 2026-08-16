@@ -86,7 +86,7 @@
     </section>
 
     <div class="bg-white border-b border-line">
-        <div class="container mx-auto max-w-[1240px] px-4 sm:px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 py-6">
+        <div class="container mx-auto max-w-[1240px] px-4 sm:px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 py-6 sm:text-center">
             <div class="flex items-center gap-3">
                 <div class="w-11 h-11 shrink-0 rounded-[11px] bg-gold/15 text-gold flex items-center justify-center">
                     <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
