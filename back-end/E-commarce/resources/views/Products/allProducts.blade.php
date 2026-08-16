@@ -163,7 +163,7 @@
                     جميع المنتجات
                 </h1>
 
-                <p class="mt-3 text-sm text-gray-500" style="font-family: 'Cairo', sans-serif">
+                <p class="mt-3 text-sm text-gray-500 mb-4" style="font-family: 'Cairo', sans-serif">
                     اكتشف أحدث المنتجات والعروض المتاحة لدينا
                 </p>
 
@@ -171,9 +171,6 @@
         </div>
 
     </section>
-
-    <hr/>
-
 
 
     <main class="mx-auto max-w-7xl px-6 pb-16">
