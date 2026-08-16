@@ -58,7 +58,7 @@
 
                 <h1 class="font-extrabold leading-[1.3] text-3xl sm:text-4xl md:text-5xl">
                     كل اللي محتاجه <br>
-                    <span class="text-gold mt-1">في مكان واحد</span>
+                    <span class="text-gold mt-3">في مكان واحد</span>
                 </h1>
 
                 <p class="text-sm sm:text-base leading-relaxed text-[#C7CADA] max-w-md">
