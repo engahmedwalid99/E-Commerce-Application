@@ -219,7 +219,7 @@
                                 @endif
 
                                 @if ($item->image)
-                                    <img src="{{ asset('storage/' . $item->image) }}" alt="{{ $item->name }}">
+                                    <img src="{{ $product->image }}" alt="{{ $product->name }}">
                                 @else
                                     <div class="flex flex-col items-center gap-3 text-[#b8912b]">
 
