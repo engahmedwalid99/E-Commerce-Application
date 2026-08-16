@@ -103,30 +103,6 @@
                                             <b class="text-[13px] font-bold">
                                                 {{ $user->name }}
                                             </b>
-
-                                            @if ($user->email == env('OWNER'))
-
-                                                <span
-                                                    class="inline-flex items-center gap-1 rounded-full bg-amber-50 px-2 py-0.5 text-[9px] font-extrabold text-amber-700">
-
-                                                    <svg
-                                                        class="h-3 w-3"
-                                                        viewBox="0 0 24 24"
-                                                        fill="none"
-                                                        stroke="currentColor"
-                                                        stroke-width="2">
-
-                                                        <path d="M3 7l4 4 5-7 5 7 4-4-2 12H5L3 7Z" />
-                                                        <path d="M5 19h14" />
-
-                                                    </svg>
-
-                                                    OWNER
-
-                                                </span>
-
-                                            @endif
-
                                         </div>
 
                                     </div>
@@ -177,7 +153,7 @@
 
                                         </svg>
 
-                                        مالك النظام
+                                        Owner
 
                                     </span>
 
@@ -223,7 +199,7 @@
                             
                                         </svg>
                             
-                                        OWNER
+                                        Owner
                             
                                     </span>
                             
