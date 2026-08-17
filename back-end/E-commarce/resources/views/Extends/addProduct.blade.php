@@ -118,7 +118,7 @@
                     </div>
 
                     <div>
-                        <label for="p_price" class="mb-2 block text-[12.5px] font-bold text-navy">السعر (EGP) سعر الخصم
+                        <label for="p_price" class="mb-2 block text-[12.5px] font-bold text-navy">سعر الخصم
                             (اختياري)</label>
                         <input id="p_price" name="price" type="number" step="0.01" placeholder="0.00"
                             value="{{ old('price') }}"
