@@ -155,7 +155,7 @@ class ProductController extends Controller
 
     public function all_products()
     {
-        $all_products = Product::paginate(10);
+        $all_products = Product::paginate(20);
         return view('Products.allProducts', [
             'products' => $all_products
         ]);
