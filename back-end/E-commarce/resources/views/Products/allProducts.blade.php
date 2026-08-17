@@ -13,6 +13,7 @@
     <style>
         body {
             background: #faf8f2;
+            font-family: 'Cairo', sans-serif !important;
         }
 
         .prod-card {
@@ -198,10 +199,12 @@
                             <div class="prod-media bg-[#F3ECDD]">
 
                                 @if ($item->sale_price && $item->sale_price < $item->price)
-                                    <span class="prod-tag sale">
+                                    @if($item->sale_price && $item->sale_price < $item->price)
+                                        <span class="prod-tag sale">
                                         خصم
                                         {{ round((($item->price - $item->sale_price) / $item->price) * 100) }}%
                                     </span>
+                                    @endif
                                 @endif
 
                                 @if ($item->image)
