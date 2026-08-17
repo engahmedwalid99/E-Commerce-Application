@@ -11,6 +11,6 @@ class logoutController
     public function logout(Request $request){
         $user = User::where('email', $request->email)->first();
         Auth::logout();
-        return redirect()->route('home')->with('success','Loged out successfully');
+        return redirect()->route('home')->with('success','نم تسجيل ألخروج بنجاح');
     }
 }
