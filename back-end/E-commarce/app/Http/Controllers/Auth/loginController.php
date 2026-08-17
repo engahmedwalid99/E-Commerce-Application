@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Requests\Auth\loginRequest;
-use App\Mail\LoginMail;
+// use App\Mail\LoginMail;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
+use App\Http\Requests\Auth\loginRequest;
 
 class loginController
 {
@@ -25,7 +25,7 @@ class loginController
                 return redirect()->intended('/dashboard');
             }
             
-            Mail::to($user->email)->send(new LoginMail($user->name));
+            // Mail::to($user->email)->send(new LoginMail($user->name));
             return redirect()->intended('/user/profile')->with('success', 'تم تسجيل الدخول بنجاح');
         }
         return redirect()->intended('login')->with('error','ألبيانات ألمدخله غير صحيحه.');
