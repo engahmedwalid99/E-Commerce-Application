@@ -23,6 +23,6 @@ class registerController
             'password' => Hash::make($data['password']),
         ]);
         Auth::login($user);
-        return redirect()->intended('')->with('success','تم أنشاء ألحساب بنجاح');
+        return redirect()->intended('/profile')->with('success','تم أنشاء ألحساب بنجاح');
     }
 }
