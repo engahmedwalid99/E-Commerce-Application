@@ -18,8 +18,8 @@ class loginController
             if($request->role == 'admin'){
                 return redirect()->intended('dashboard');
             }
-            return redirect()->intended()->with('success','Loged in successfully');
+            return redirect()->intended()->with('success','تم تسجيل ألدخول بنجاح');
         }
-        return redirect()->intended('login')->with('error','invalid cradentails');
+        return redirect()->intended('login')->with('error','ألبيانات ألمدخله غير صحيحه.');
     }
 }
