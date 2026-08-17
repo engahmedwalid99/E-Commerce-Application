@@ -52,6 +52,7 @@ Route::middleware(['auth', 'status'])->group(function () {
 
     Route::get('product-details/{id}', [ProductController::class, 'product_details'])->name('product_details');
     Route::get('all-products', [ProductController::class, 'all_products'])->name('all_products');
+    Route::get('product-search', [ProductController::class, 'search'])->name('search');
 
     Route::get('/cart', [CartController::class, 'index'])->name('cart');
     Route::post('/cart/add/{product}', [CartController::class, 'add'])->name('cart.add');

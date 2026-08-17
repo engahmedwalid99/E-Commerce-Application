@@ -87,14 +87,13 @@
             </a>
         </nav>
         <div class="mr-auto max-w-md flex-1 xl:block">
-            <form class="relative">
+            <form class="relative" action="{{ route('search') }}">
                 <svg class="pointer-events-none absolute right-4 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-400"
                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
                     <circle cx="11" cy="11" r="7" />
                     <path d="m20 20-4-4" />
                 </svg>
-                <input type="search" placeholder="ابحث عن منتج..."
-                    class="h-11 w-full rounded-2xl border border-gray-200 bg-gray-50/80 pr-12 pl-4 text-xs text-gray-700 outline-none transition duration-200 placeholder:text-gray-400 focus:border-gray-300 focus:bg-white focus:ring-4 focus:ring-gray-100">
+                <input type="search" placeholder="ابحث عن منتج..." name="user_input" class="h-11 w-full rounded-2xl border border-gray-200 bg-gray-50/80 pr-12 pl-4 text-xs text-gray-700 outline-none transition duration-200 placeholder:text-gray-400 focus:border-gray-300 focus:bg-white focus:ring-4 focus:ring-gray-100">
             </form>
         </div>
         <div class="flex shrink-0 items-center gap-1 sm:gap-2">

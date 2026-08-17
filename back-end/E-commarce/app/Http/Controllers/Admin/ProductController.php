@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\ProductRequest;
 use App\Models\Product;
 use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
+use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
@@ -155,9 +156,20 @@ class ProductController extends Controller
     public function all_products()
     {
         $all_products = Product::paginate(10);
-
         return view('Products.allProducts', [
             'products' => $all_products
         ]);
+    }
+
+    public function search(Request $request)
+    {
+        $search = trim($request->user_input);
+
+        $products = Product::where('name', 'LIKE', "%{$search}%")
+            ->latest()
+            ->paginate(12)
+            ->withQueryString();
+
+        return view('Products.productsSearch', compact('products'));
     }
 }
