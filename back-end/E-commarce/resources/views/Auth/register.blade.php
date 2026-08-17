@@ -110,10 +110,10 @@
         </aside>
 
         <section
-            class="flex items-center justify-center h-auto md:h-screen md:overflow-y-auto px-6 py-16 bg-white"
+            class="flex items-start justify-center h-auto md:h-screen md:overflow-y-auto px-6 py-16 bg-white"
             dir="rtl">
 
-            <div class="w-full max-w-[400px]">
+            <div class="w-full max-w-[400px] my-auto">
                 <h2 class="font-tajawal font-extrabold text-[28px] m-0 mb-1.5">إنشاء حساب جديد</h2>
                 <p class="text-muted text-[14.5px] m-0 mb-6">
                     لديك حساب بالفعل؟
