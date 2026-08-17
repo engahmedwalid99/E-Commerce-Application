@@ -259,10 +259,10 @@
             
                                 @if ($item->sale_price && $item->sale_price < $item->price)
                                     <span class="text-base sm:text-[16.5px] font-bold text-[#b08a35]">
-                                        {{ number_format($item->price, 2) }}
+                                        {{ number_format($item->sale_price, 2) }}
                                     </span>
                                     <span class="text-xs text-gray-400 line-through">
-                                        {{ number_format($item->sale_price, 2) }}
+                                        {{ number_format($item->price, 2) }}
                                     </span>
             
                                 @else
