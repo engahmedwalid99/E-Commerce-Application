@@ -33,7 +33,7 @@ class GithubController
             ]);
 
             Auth::login($user);
-            return redirect()->route('home')->with('success','تم ألدخول بواسطه github');
+            return redirect()->route('user.profile')->with('success','تم ألدخول بواسطه github.');
 
         } catch (\Throwable $th) {
             return redirect()
