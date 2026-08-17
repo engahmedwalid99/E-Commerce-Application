@@ -110,7 +110,7 @@
         </aside>
 
         <section
-            class="flex items-center justify-center h-auto md:h-screen md:overflow-y-auto px-6 py-16 bg-white"
+            class="flex items-start justify-center h-auto md:h-screen md:overflow-y-auto px-6 py-16 bg-white"
             dir="rtl">
 
             <div class="fixed left-5 top-5 z-[9999] w-[calc(100%-40px)] max-w-sm space-y-3">
@@ -213,7 +213,7 @@
                 }, 4000);
             </script>
 
-            <div class="w-full max-w-[400px]">
+            <div class="w-full max-w-[400px] my-auto">
                 <h2 class="font-tajawal font-extrabold text-[28px] m-0 mb-1.5">تسجيل الدخول</h2>
                 <p class="text-muted text-[14.5px] m-0 mb-6">
                     ليس لديك حساب؟
