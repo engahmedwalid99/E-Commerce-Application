@@ -32,7 +32,7 @@ class GoogleController
             ]);
 
             Auth::login($user);
-            return redirect()->route('user.profile')->with('success', 'Logged in successfully');
+            return redirect()->route('user.profile')->with('success', 'تم ألدخول بواسطه Google.');
         } catch (\Throwable $th) {
             return redirect()->back()->with('error', $th->getMessage());
         }
