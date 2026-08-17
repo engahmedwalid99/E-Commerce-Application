@@ -18,7 +18,7 @@ class loginController
             if($request->role == 'admin'){
                 return redirect()->intended('dashboard');
             }
-            return redirect()->intended()->with('success','تم تسجيل ألدخول بنجاح');
+            return redirect()->intended('/user/profile')->with('success','تم تسجيل ألدخول بنجاح');
         }
         return redirect()->intended('login')->with('error','ألبيانات ألمدخله غير صحيحه.');
     }
