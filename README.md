@@ -718,6 +718,10 @@ If you find this project useful or interesting, consider giving the repository a
 <h4>Link of website.</h4>
 https://store-pro.up.railway.app/
 
+<h3>Account admin for test</h3>
+<h5>Email: admin@gmail.com</h5>
+<h5>Password: admin12345</h5>
+
 ## 📄 License
 
 This project is open-source and available for educational and development purposes.
