@@ -212,42 +212,93 @@
                     <a href="{{ route('product_details', $item->id) }}">
                         <div class="relative aspect-square flex items-center justify-center bg-[#F3ECDD]">
                             @if ($item->sale_price && $item->sale_price < $item->price)
-                                <span class="prod-tag sale">
+                                <span
+                                    class="absolute top-3 right-3 z-20 bg-red-600 text-white text-xs sm:text-sm font-bold px-3 py-1.5 rounded-lg shadow-md">
                                     خصم
                                     {{ round((($item->price - $item->sale_price) / $item->price) * 100) }}%
                                 </span>
-                             @endif
+                            @endif
                             @if ($item->image)
                                 <div class="overflow-hidden w-full h-full">
-                                    <img class="w-full h-full object-cover" src="{{ $item->image }}" alt="{{ $item->name }}">
+                                    <img
+                                        class="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                                        src="{{ $item->image }}"
+                                        alt="{{ $item->name }}">
                                 </div>
                             @else
-                                <svg class="w-12 h-12 sm:w-14 sm:h-14 opacity-55" viewBox="0 0 24 24" fill="none" stroke="#B8912B" stroke-width="1.4">
+                                <svg
+                                    class="w-12 h-12 sm:w-14 sm:h-14 opacity-55"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="#B8912B"
+                                    stroke-width="1.4">
+            
                                     <rect x="3" y="8" width="18" height="12" rx="2" />
                                     <path d="M8 8V6a4 4 0 0 1 8 0v2" />
                                 </svg>
                             @endif
+            
                         </div>
-                        <div class="px-3 sm:px-4 pt-3 sm:pt-4 pb-4">
-                            <div class="text-[11px] sm:text-[11.5px] text-muted mb-1">{{ $item->category_id }}</div>
-                            <div class="text-sm sm:text-[14.5px] font-bold leading-relaxed mb-2 line-clamp-2">{{ $item->name }}</div>
-                            <hr class="border-line my-2">
-                            <div class="flex items-center justify-between gap-2">
-                                <span class="text-base sm:text-[16.5px] font-bold text-[#b08a35]">
-                                    {{ number_format($item->sale_price ?? $item->price, 2) }}
-                                </span>
-                                <form action="{{ route('cart.add', $item->id) }}" method="POST">
-                                    @csrf
-                                    <button type="submit"
-                                        class="w-9 h-9 sm:w-[38px] sm:h-[38px] rounded-[10px] bg-navy text-white flex items-center justify-center cursor-pointer transition-colors hover:bg-gold hover:text-navy">
-                                        <svg class="w-4 h-4 sm:w-[17px] sm:h-[17px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                            <path d="M12 5v14M5 12h14" />
-                                        </svg>
-                                    </button>
-                                </form>
+                        <div class="px-3 sm:px-4 pt-3 sm:pt-4">
+                            <div class="text-[11px] sm:text-[11.5px] text-muted mb-1">
+                                {{ $item->category_id }}
                             </div>
+                            <div
+                                class="text-sm sm:text-[14.5px] font-bold leading-relaxed mb-2 line-clamp-2">
+                                {{ $item->name }}
+                            </div>
+            
+                            <hr class="border-line my-2">
+            
                         </div>
                     </a>
+                    <div class="px-3 sm:px-4 pb-4">
+            
+                        <div class="flex items-center justify-between gap-2">
+                            <div class="flex items-center gap-2">
+            
+                                @if ($item->sale_price && $item->sale_price < $item->price)
+                                    <span class="text-base sm:text-[16.5px] font-bold text-[#b08a35]">
+                                        {{ number_format($item->sale_price, 2) }}
+                                    </span>
+                                    <span class="text-xs text-gray-400 line-through">
+                                        {{ number_format($item->price, 2) }}
+                                    </span>
+            
+                                @else
+                                    <span class="text-base sm:text-[16.5px] font-bold text-[#b08a35]">
+                                        {{ number_format($item->price, 2) }}
+                                    </span>
+            
+                                @endif
+            
+                            </div>
+            
+                            <form action="{{ route('cart.add', $item->id) }}" method="POST">
+                                @csrf
+            
+                                <button
+                                    type="submit"
+                                    class="w-9 h-9 sm:w-[38px] sm:h-[38px] rounded-[10px] bg-navy text-white flex items-center justify-center cursor-pointer transition-all duration-300 hover:bg-gold hover:text-navy hover:scale-105">
+            
+                                    <svg
+                                        class="w-4 h-4 sm:w-[17px] sm:h-[17px]"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="2">
+            
+                                        <path d="M12 5v14M5 12h14" />
+            
+                                    </svg>
+            
+                                </button>
+                            </form>
+            
+                        </div>
+            
+                    </div>
+            
                 </div>
             @endforeach
         </div>
