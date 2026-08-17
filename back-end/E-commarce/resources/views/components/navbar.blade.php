@@ -297,22 +297,7 @@
 
     </div>
     <div id="mobileMenu" class="hidden border-t border-gray-100 bg-white lg:hidden">
-
         <div class="mx-auto max-w-[1500px] space-y-3 px-4 py-4 sm:px-6">
-
-            <form class="relative">
-
-                <svg class="pointer-events-none absolute right-4 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-400"
-                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                    <circle cx="11" cy="11" r="7" />
-                    <path d="m20 20-4-4" />
-                </svg>
-
-                <input type="search" placeholder="ابحث عن منتج، ماركة، أو فئة..."
-                    class="h-11 w-full rounded-xl border border-gray-200 bg-gray-50 pr-12 pl-4 text-sm outline-none transition focus:border-gray-300 focus:bg-white focus:ring-4 focus:ring-gray-100">
-
-            </form>
-
             <nav class="grid gap-1">
 
                 <a href="{{ route('home') }}"
