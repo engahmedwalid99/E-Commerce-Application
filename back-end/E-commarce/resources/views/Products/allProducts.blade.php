@@ -8,331 +8,456 @@
     <title>المنتجات | {{ env('APP_NAME') }}</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <style>
-        body {
-            background: #faf8f2;
-            font-family: 'Cairo', sans-serif !important;
-        }
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
 
-        .prod-card {
-            background: #fff;
-            border: 1px solid #eee8da;
-            border-radius: 20px;
-            overflow: hidden;
-            transition: .3s ease;
-        }
+                    fontFamily: {
+                        cairo: ['Cairo', 'sans-serif'],
+                    },
 
-        .prod-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, .08);
-        }
+                    keyframes: {
 
-        .prod-media {
-            height: 280px;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
+                        fadeUp: {
+                            '0%': {
+                                opacity: '0',
+                                transform: 'translateY(35px) scale(.96)'
+                            },
+                            '100%': {
+                                opacity: '1',
+                                transform: 'translateY(0) scale(1)'
+                            },
+                        },
 
-        .prod-media img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            transition: .4s ease;
-        }
+                        float: {
+                            '0%, 100%': {
+                                transform: 'translateY(0)'
+                            },
+                            '50%': {
+                                transform: 'translateY(-7px)'
+                            },
+                        },
 
-        .prod-card:hover .prod-media img {
-            transform: scale(1.06);
-        }
+                        shine: {
+                            '0%': {
+                                transform: 'translateX(-120%)'
+                            },
+                            '100%': {
+                                transform: 'translateX(120%)'
+                            },
+                        },
 
-        .prod-tag {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            z-index: 5;
-            padding: 6px 12px;
-            border-radius: 999px;
-            font-size: 12px;
-            font-weight: bold;
-        }
+                        pulseSoft: {
+                            '0%, 100%': {
+                                opacity: '.6'
+                            },
+                            '50%': {
+                                opacity: '1'
+                            },
+                        },
 
-        .prod-tag.sale {
-            background: #b8912b;
-            color: white;
-        }
+                    },
 
-        .wish-btn {
-            position: absolute;
-            top: 14px;
-            left: 14px;
-            width: 38px;
-            height: 38px;
-            border-radius: 50%;
-            background: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 5;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, .08);
-        }
+                    animation: {
 
-        .wish-btn svg {
-            width: 20px;
-            height: 20px;
-        }
+                        fadeUp: 'fadeUp .7s cubic-bezier(.22,1,.36,1) both',
 
-        .prod-body {
-            padding: 20px;
-        }
+                        float: 'float 3s ease-in-out infinite',
 
-        .prod-cat {
-            color: #b8912b;
-            font-size: 12px;
-            font-weight: bold;
-            margin-bottom: 8px;
-        }
+                        shine: 'shine 1.4s ease-in-out',
 
-        .prod-name {
-            font-size: 17px;
-            font-weight: bold;
-            color: #172033;
-            min-height: 48px;
-        }
+                        pulseSoft: 'pulseSoft 2s ease-in-out infinite',
 
-        .prod-foot {
-            margin-top: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
+                    },
 
-        .price b {
-            font-size: 20px;
-            color: #172033;
-        }
+                },
+            },
+        };
+    </script>
 
-        .price span {
-            font-size: 12px;
-            color: #999;
-        }
-
-        .add-btn {
-            width: 42px;
-            height: 42px;
-            border-radius: 12px;
-            background: #172033;
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: .2s;
-        }
-
-        .add-btn:hover {
-            background: #b8912b;
-        }
-
-        .add-btn svg {
-            width: 20px;
-            height: 20px;
-        }
-    </style>
 </head>
 
-<body>
+
+<body class="min-h-screen bg-[#faf8f2] font-cairo text-[#172033]">
 
     <x-navbar />
 
     <x-success />
 
-    <section class="mx-auto max-w-7xl px-6 pt-12">
 
-        <div class="flex flex-col justify-between gap-5 md:flex-row md:items-end">
+    <section class="relative overflow-hidden">
 
-            <div>
+        <div class="pointer-events-none absolute -right-32 -top-32 h-80 w-80 rounded-full bg-[#b8912b]/10 blur-3xl">
+        </div>
 
-                <p class="mb-2 text-l font-bold text-[#b8912b]" style="font-family: 'Cairo', sans-serif">
-                    {{ env('APP_NAME') }}
-                </p>
+        <div class="pointer-events-none absolute -left-32 top-20 h-80 w-80 rounded-full bg-[#172033]/5 blur-3xl">
+        </div>
 
-                <h1 class="text-4xl font-bold text-[#172033] mt-1" style="font-family: 'Cairo', sans-serif">
-                    جميع المنتجات
+
+        <div class="relative mx-auto max-w-7xl px-6 pb-10 pt-14 lg:pt-20">
+
+            <div class="max-w-3xl">
+
+                <div class="mb-4 flex items-center gap-3">
+
+                    <span class="h-[2px] w-10 bg-[#b8912b]"></span>
+
+                    <p class="text-sm font-bold tracking-wide text-[#b8912b]">
+                        {{ env('APP_NAME') }}
+                    </p>
+
+                </div>
+
+
+                <h1 class="text-xl font-extrabold leading-tight text-[#172033] sm:text-xl lg:text-xl">
+                    اكتشف
+                    <span class="relative inline-block text-[#b8912b]">
+
+                        أفضل المنتجات
+
+                        <span class="absolute -bottom-1 right-0 h-1 w-full rounded-full bg-[#b8912b]/20"></span>
+
+                    </span>
                 </h1>
 
-                <p class="mt-3 text-sm text-gray-500 mb-4" style="font-family: 'Cairo', sans-serif">
-                    اكتشف أحدث المنتجات والعروض المتاحة لدينا
+
+                <p class="mt-5 max-w-2xl text-sm leading-8 text-gray-500 sm:text-base">
+                    اكتشف أحدث المنتجات والعروض المتاحة لدينا،
+                    واختر ما يناسبك من مجموعة منتجاتنا المميزة.
                 </p>
 
+
+                @if ($products->count())
+                    <div class="mt-8 flex flex-wrap gap-4">
+
+                        <div
+                            class="flex items-center gap-3 rounded-2xl border border-[#eee8da] bg-white px-5 py-3 shadow-sm">
+
+                            <div
+                                class="flex h-10 w-10 items-center justify-center rounded-xl bg-[#b8912b]/10 text-[#b8912b]">
+                                <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"
+                                        d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                                </svg>
+                            </div>
+
+                            <div class="flex items-center justify-center">
+                                <p class="text-xs text-gray-400">
+                                    إجمالي المنتجات:
+                                </p>
+
+                                <p class="text-lg font-extrabold mr-2 text-[#172033]">
+                                    {{ $products->count() }}
+                                </p>
+                            </div>
+
+                        </div>
+
+                    </div>
+                @endif
+
             </div>
+
         </div>
 
     </section>
 
 
-    <main class="mx-auto max-w-7xl px-6 pb-16">
+    <main class="mx-auto max-w-7xl px-6 pb-20">
+
 
         @if ($products->count())
 
-            <div class="mb-6 flex items-center justify-between">
 
-                <p class="text-sm text-gray-500" style="font-family: 'Cairo', sans-serif">
-                    عدد المنتجات:
-                    <strong class="text-[#172033]">
-                        {{ $products->count() }}
-                    </strong>
-                </p>
+            <div
+                class="mb-8 flex flex-col gap-4 border-b border-[#eee8da] pb-5 sm:flex-row sm:items-center sm:justify-between">
+
+                <div>
+
+                    <h2 class="text-xl font-extrabold text-[#172033]">
+                        جميع المنتجات
+                    </h2>
+
+                    <p class="mt-1 text-xs text-gray-400">
+                        اختر المنتج المناسب لك
+                    </p>
+
+                </div>
+
+
+                <div
+                    class="flex w-fit items-center gap-2 rounded-full bg-white px-4 py-2 text-xs font-semibold text-gray-500 shadow-sm ring-1 ring-[#eee8da]">
+
+                    <span class="h-2 w-2 animate-pulseSoft rounded-full bg-[#b8912b]"></span>
+
+                    {{ $products->count() }} منتج متاح
+
+                </div>
+
             </div>
+
 
 
             <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
 
-                @foreach ($products as $item)
-                    <div class="prod-card">
+                @foreach ($products as $index => $item)
+                    @php
 
-                        <a href="{{ route('product_details', $item->id) }}">
+                        $hasSale = $item->sale_price && $item->sale_price < $item->price;
 
-                            <div class="prod-media bg-[#F3ECDD]">
+                        $discount = $hasSale ? round((($item->price - $item->sale_price) / $item->price) * 100) : 0;
 
-                                @if ($item->sale_price && $item->sale_price < $item->price)
-                                    <span class="prod-tag sale">
-                                        خصم
-                                        {{ round((($item->price - $item->sale_price) / $item->price) * 100) }}%
-                                    </span>
-                                @endif
+                        $displayPrice = $hasSale ? $item->sale_price : $item->price;
+                    @endphp
 
-                                @if ($item->image)
-                                    <img src="{{ $item->image }}" alt="{{ $item->name }}">
-                                @else
-                                    <div class="flex flex-col items-center gap-3 text-[#b8912b]">
 
-                                        <svg class="h-20 w-20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                            stroke-width="1.4">
+                    <div class="group relative animate-fadeUp" style="animation-delay: {{ $index * 80 }}ms;">
 
-                                            <rect x="3" y="8" width="18" height="12" rx="2" />
+                        <div
+                            class="absolute -inset-1 rounded-[26px] bg-gradient-to-r from-[#b8912b]/20 via-transparent to-[#172033]/10 opacity-0 blur-xl transition duration-500 group-hover:opacity-100">
+                        </div>
 
-                                            <path d="M8 8V6a4 4 0 0 1 8 0v2" />
 
-                                        </svg>
+                        <div
+                            class="relative overflow-hidden rounded-[24px] border border-[#eee8da] bg-white shadow-sm transition-all duration-500 ease-out group-hover:-translate-y-2">
 
-                                        <span class="text-xs">
-                                            لا توجد صورة
-                                        </span>
+                            <a href="{{ route('product_details', $item->id) }}" class="relative block">
 
+                                <div
+                                    class="relative flex h-[290px] items-center justify-center overflow-hidden bg-[#f3ecdd]">
+
+                                    <div
+                                        class="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-white/30 transition duration-700 group-hover:scale-150">
                                     </div>
-                                @endif
 
-                            </div>
+                                    <div
+                                        class="absolute -bottom-16 -left-10 h-36 w-36 rounded-full bg-[#b8912b]/5 transition duration-700 group-hover:scale-125">
+                                    </div>
 
 
-                            <div class="prod-body">
+                                    @if ($hasSale)
+                                        <div
+                                            class="absolute right-4 top-4 z-20 overflow-hidden rounded-full bg-[#b8912b] px-3 py-1.5 text-xs font-bold text-white shadow-lg">
 
-                                <div class="prod-cat">
-                                    {{ $item->category_id }}
-                                </div>
-
-                                <div class="prod-name">
-                                    {{ $item->name }}
-                                </div>
-
-                                <div class="mt-4 border-t border-[#eee8da] pt-4">
-
-                                    <div class="prod-foot">
-
-                                        <div class="price">
-
-                                            @if ($item->sale_price && $item->sale_price < $item->price)
-                                                <div>
-                                                    <b>
-                                                        {{ number_format($item->sale_price, 2) }}
-                                                    </b>
-
-                                                    <span>
-                                                        EGP
-                                                    </span>
-                                                </div>
-
-                                                <div class="mt-1">
-                                                    <span class="line-through">
-                                                        {{ number_format($item->price, 2) }}
-                                                        EGP
-                                                    </span>
-                                                </div>
-                                            @else
-                                                <b>
-                                                    {{ number_format($item->sale_price, 2) }}
-                                                </b>
-
-                                                <span>
-                                                    EGP
-                                                </span>
-                                            @endif
+                                            <span class="relative z-10">
+                                                خصم {{ $discount }}%
+                                            </span>
 
                                         </div>
-                                        <form action="{{ route('cart.add', $item->id) }}" method="POST">
-                                            @csrf
-                                            <button type="submit"
-                                                class="add-btn cursor-pointer">
+                                    @endif
 
-                                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                    stroke-width="2">
-                                                    <path d="M12 5v14M5 12h14" />
+
+                                    @if ($item->image)
+                                        <img src="{{ $item->image }}" alt="{{ $item->name }}" loading="lazy"
+                                            class="relative z-10 h-full w-full object-contain p-6 transition duration-700 ease-out group-hover:scale-110">
+                                    @else
+                                        <div class="relative z-10 flex flex-col items-center gap-3 text-[#b8912b]">
+
+                                            <div
+                                                class="flex h-24 w-24 animate-float items-center justify-center rounded-3xl bg-white/60">
+
+                                                <svg class="h-12 w-12" viewBox="0 0 24 24" fill="none"
+                                                    stroke="currentColor" stroke-width="1.4">
+
+                                                    <rect x="3" y="8" width="18" height="12" rx="2" />
+
+                                                    <path d="M8 8V6a4 4 0 0 1 8 0v2" />
+
                                                 </svg>
-                                            </button>
-                                        </form>
+
+                                            </div>
+
+                                            <span class="text-xs font-semibold">
+                                                لا توجد صورة
+                                            </span>
+
+                                        </div>
+                                    @endif
+
+
+                                    <div
+                                        class="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/10 to-transparent opacity-0 transition duration-500 group-hover:opacity-100">
+                                    </div>
+
+
+                                    <div
+                                        class="pointer-events-none absolute inset-y-0 -left-full z-30 w-1/2 -skew-x-12 bg-gradient-to-r from-transparent via-white/30 to-transparent transition-transform duration-1000 group-hover:left-full">
+                                    </div>
+
+                                </div>
+
+                            </a>
+
+
+                            <div class="p-5">
+
+
+                                <div class="mb-2 flex items-center gap-2">
+
+                                    <span class="h-1.5 w-1.5 rounded-full bg-[#b8912b]"></span>
+
+                                    <span class="text-xs font-bold text-[#b8912b]">
+                                        {{ $item->category_id }}
+                                    </span>
+
+                                </div>
+
+
+                                <a href="{{ route('product_details', $item->id) }}">
+
+                                    <h3
+                                        class="min-h-[52px] text-base font-extrabold leading-7 text-[#172033] transition-colors duration-300 group-hover:text-[#b8912b]">
+                                        {{ $item->name }}
+                                    </h3>
+
+                                </a>
+
+
+                                <div class="my-4 h-px bg-[#eee8da]"></div>
+
+
+                                <div class="flex items-end justify-between gap-3">
+
+                                    <div>
+
+                                        <p class="mb-1 text-[11px] text-gray-400">
+                                            السعر
+                                        </p>
+
+                                        <div class="flex items-baseline gap-1">
+
+                                            <span class="text-xl font-extrabold text-[#172033]">
+                                                {{ number_format($displayPrice, 2) }}
+                                            </span>
+
+                                            <span class="text-[11px] font-semibold text-gray-400">
+                                                EGP
+                                            </span>
+
+                                        </div>
+
+
+                                        @if ($hasSale)
+                                            <div class="mt-1 flex items-center gap-2">
+
+                                                <span class="text-xs text-gray-400 line-through">
+                                                    {{ number_format($item->price, 2) }}
+                                                    EGP
+                                                </span>
+
+                                                <span class="text-[10px] font-bold text-green-600">
+                                                    وفر {{ $discount }}%
+                                                </span>
+
+                                            </div>
+                                        @endif
 
                                     </div>
+
+
+                                    <form action="{{ route('cart.add', $item->id) }}" method="POST">
+
+                                        @csrf
+
+                                        <button type="submit" title="إضافة إلى السلة"
+                                            class="group/cart relative flex h-12 w-12 items-center justify-center overflow-hidden rounded-2xl bg-[#172033] text-white shadow-lg transition-all duration-300 hover:scale-105 hover:bg-[#b8912b] hover:shadow-xl active:scale-95">
+
+                                            <span
+                                                class="absolute inset-0 translate-y-full bg-white/10 transition-transform duration-300 group-hover/cart:translate-y-0"></span>
+
+                                            <svg class="relative z-10 h-5 w-5 transition-transform duration-300 group-hover/cart:scale-110"
+                                                fill="none" stroke="currentColor" viewBox="0 0 24 24">
+
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    stroke-width="1.8"
+                                                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2 2h12m-9 4a1 1 0 100-2 1 1 0 000 2zm8 0a1 1 0 100-2 1 1 0 000 2z" />
+
+                                            </svg>
+
+                                        </button>
+
+                                    </form>
+
                                 </div>
+
                             </div>
-                        </a>
+
+                        </div>
+
                     </div>
                 @endforeach
+
             </div>
+
+
             @if (method_exists($products, 'links'))
-                <div class="mt-10">
+                <div class="mt-12">
                     {{ $products->links() }}
                 </div>
             @endif
         @else
-            <div class="rounded-2xl border border-[#eee8da] bg-white px-6 py-20 text-center">
+            <div
+                class="relative overflow-hidden rounded-[30px] border border-[#eee8da] bg-white px-6 py-24 text-center shadow-sm">
 
-                <div class="mx-auto flex h-20 w-20 items-center justify-center rounded-2xl bg-[#faf7ef]">
-                    <svg
-                        class="h-10 w-10 text-[#b58b3a]"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                        stroke="currentColor"
-                        stroke-width="1.6"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                    >
-                        <path d="M6.5 8.5h11l1.1 11H5.4l1.1-11Z" />
-                        <path d="M9 8.5V6.8a3 3 0 0 1 6 0v1.7" />
-                        <path d="M9.5 12.5v.01" />
-                        <path d="M14.5 12.5v.01" />
-                    </svg>
+                <div
+                    class="pointer-events-none absolute -right-20 -top-20 h-60 w-60 rounded-full bg-[#b8912b]/5 blur-3xl">
                 </div>
-            
-                <h2 class="mt-6 text-xl font-extrabold text-[#172033]">
-                    لا توجد منتجات
-                </h2>
-            
-                <p class="mx-auto mt-2 max-w-sm text-sm leading-6 text-gray-500">
-                    لم يتم إضافة أي منتجات حتى الآن.
-                </p>
-            
+
+                <div
+                    class="pointer-events-none absolute -bottom-20 -left-20 h-60 w-60 rounded-full bg-[#172033]/5 blur-3xl">
+                </div>
+
+
+                <div class="relative">
+
+                    <div
+                        class="mx-auto flex h-24 w-24 animate-float items-center justify-center rounded-[28px] bg-[#faf7ef] text-[#b58b3a]">
+
+                        <svg class="h-12 w-12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+
+                            <path d="M6.5 8.5h11l1.1 11H5.4l1.1-11Z" />
+
+                            <path d="M9 8.5V6.8a3 3 0 0 1 6 0v1.7" />
+
+                            <path d="M9.5 12.5v.01" />
+
+                            <path d="M14.5 12.5v.01" />
+
+                        </svg>
+
+                    </div>
+
+
+                    <h2 class="mt-7 text-2xl font-extrabold text-[#172033]">
+                        لا توجد منتجات
+                    </h2>
+
+
+                    <p class="mx-auto mt-3 max-w-sm text-sm leading-7 text-gray-500">
+                        لم يتم إضافة أي منتجات حتى الآن.
+                        يرجى العودة لاحقًا لمشاهدة المنتجات الجديدة.
+                    </p>
+
+                </div>
+
             </div>
+
 
         @endif
 
     </main>
 
+
     <x-footer />
+
 
 </body>
 
