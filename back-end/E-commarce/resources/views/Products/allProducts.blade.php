@@ -258,13 +258,13 @@
 
                                                 <div class="mt-1">
                                                     <span class="line-through">
-                                                        {{ number_format($item->sale_price, 2) }}
+                                                        {{ number_format($item->price, 2) }}
                                                         EGP
                                                     </span>
                                                 </div>
                                             @else
                                                 <b>
-                                                    {{ number_format($item->price, 2) }}
+                                                    {{ number_format($item->sale_price, 2) }}
                                                 </b>
 
                                                 <span>
