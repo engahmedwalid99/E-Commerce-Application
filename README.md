@@ -714,7 +714,7 @@ If you find this project useful or interesting, consider giving the repository a
 
 ---
 
-<h3>Developed by Ahmed Walid<h3/>
+# Developed by Ahmed Walid
 <h4>Link of website.</h4>
 https://store-pro.up.railway.app/
 
