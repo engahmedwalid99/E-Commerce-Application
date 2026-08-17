@@ -46,9 +46,9 @@ class registerRequest extends FormRequest
                 'string',
             ],
 
-            // 'g-recaptcha-response' => [
-            //     'required',
-            // ]
+            'g-recaptcha-response' => [
+                'required',
+            ]
         ];
     }
 
