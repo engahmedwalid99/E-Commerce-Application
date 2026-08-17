@@ -248,7 +248,7 @@
                                             @if ($item->sale_price && $item->sale_price < $item->price)
                                                 <div>
                                                     <b>
-                                                        {{ number_format($item->price, 2) }}
+                                                        {{ number_format($item->sale_price, 2) }}
                                                     </b>
 
                                                     <span>
