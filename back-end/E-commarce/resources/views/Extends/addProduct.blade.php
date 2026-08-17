@@ -118,7 +118,8 @@
                     </div>
 
                     <div>
-                        <label for="p_price" class="mb-2 block text-[12.5px] font-bold text-navy">السعر (EGP)</label>
+                        <label for="p_price" class="mb-2 block text-[12.5px] font-bold text-navy">السعر (EGP) سعر الخصم
+                            (اختياري)</label>
                         <input id="p_price" name="price" type="number" step="0.01" placeholder="0.00"
                             value="{{ old('price') }}"
                             class="h-11 w-full rounded-xl border border-line bg-cream/60 px-4 text-[13px] outline-none transition placeholder:text-muted focus:border-gold focus:bg-white focus:ring-4 focus:ring-gold-soft">
@@ -130,8 +131,7 @@
                     </div>
 
                     <div>
-                        <label for="p_sale_price" class="mb-2 block text-[12.5px] font-bold text-navy">سعر الخصم
-                            (اختياري)</label>
+                        <label for="p_sale_price" class="mb-2 block text-[12.5px] font-bold text-navy">السعر (EGP)</label>
                         <input id="p_sale_price" name="sale_price" type="number" step="0.01" placeholder="0.00"
                             value="{{ old('sale_price') }}"
                             class="h-11 w-full rounded-xl border border-line bg-cream/60 px-4 text-[13px] outline-none transition placeholder:text-muted focus:border-gold focus:bg-white focus:ring-4 focus:ring-gold-soft">
