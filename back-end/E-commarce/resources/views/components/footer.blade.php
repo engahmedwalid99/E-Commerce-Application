@@ -17,24 +17,17 @@
 
                 <div class="mt-6 flex items-center gap-3">
 
-                    <a href="#" aria-label="Instagram"
-                        class="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-gray-300 transition hover:border-[#b8912b] hover:bg-[#b8912b] hover:text-white">
-
-                        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="1.6">
-
-                            <rect x="3" y="3" width="18" height="18" rx="5" />
-
-                            <circle cx="12" cy="12" r="4" />
-
-                            <circle cx="17.5" cy="6.5" r="1" />
-
+                    <a href="https://wa.me/201023046551" target="_blank" rel="noopener noreferrer"
+                        aria-label="WhatsApp"
+                        class="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-gray-300 transition hover:border-[#25D366] hover:bg-[#25D366] hover:text-white">
+                    
+                        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M20.52 3.48A11.87 11.87 0 0 0 12.06 0C5.5 0 .16 5.34.16 11.9c0 2.1.55 4.15 1.59 5.96L.06 24l6.28-1.65a11.9 11.9 0 0 0 5.71 1.46h.01c6.56 0 11.9-5.34 11.9-11.9 0-3.18-1.24-6.16-3.44-8.43ZM12.06 21.8h-.01a9.9 9.9 0 0 1-5.05-1.38l-.36-.21-3.73.98.99-3.64-.23-.37a9.9 9.9 0 0 1-1.52-5.28C2.15 6.42 6.59 1.98 12.06 1.98c2.65 0 5.14 1.03 7.01 2.91a9.86 9.86 0 0 1 2.9 7.02c0 5.47-4.44 9.89-9.91 9.89Zm5.42-7.4c-.3-.15-1.77-.87-2.05-.97-.28-.1-.48-.15-.68.15-.2.3-.78.97-.96 1.17-.18.2-.35.22-.65.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.75-1.64-2.05-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.68-1.64-.93-2.25-.25-.59-.5-.51-.68-.52h-.58c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.49s1.07 2.89 1.22 3.09c.15.2 2.1 3.2 5.09 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35Z" />
                         </svg>
-
                     </a>
 
 
-                    <a href="#" aria-label="Twitter"
+                    <a href="https://x.com/ahm3d_walid" aria-label="Twitter"
                         class="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-gray-300 transition hover:border-[#b8912b] hover:bg-[#b8912b] hover:text-white">
 
                         <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
@@ -47,7 +40,7 @@
                     </a>
 
 
-                    <a href="#" aria-label="Facebook"
+                    <a href="https://www.facebook.com/share/199f5Uc6kz/" aria-label="Facebook"
                         class="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-gray-300 transition hover:border-[#b8912b] hover:bg-[#b8912b] hover:text-white">
 
                         <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
