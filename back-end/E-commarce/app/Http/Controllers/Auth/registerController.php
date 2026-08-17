@@ -23,6 +23,6 @@ class registerController
             'password' => Hash::make($data['password']),
         ]);
         Auth::login($user);
-        return redirect()->intended('User.profile')->with('success','Account created successfully');
+        return redirect()->intended('user.profile')->with('success','Account created successfully');
     }
 }
