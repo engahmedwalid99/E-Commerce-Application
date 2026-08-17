@@ -14,14 +14,19 @@ class loginController
     }
 
     public function login(loginRequest $request){
+
         $data = $request->validated();
-        $cradentails = $request->only("email","password");
-        if(Auth::attempt($cradentails)){
-            if($request->role == 'admin'){
-                return redirect()->intended('dashboard');
+
+        $credentials = $request->only("email","password");
+
+        if (Auth::attempt($credentials)) {
+            $user = Auth::user();
+            if ($user->role === 'admin') {
+                return redirect()->intended('/dashboard');
             }
-            Mail::to($request->email)->send(new LoginMail(Auth::user()->name));
-            return redirect()->intended('/user/profile')->with('success','تم تسجيل ألدخول بنجاح');
+            
+            Mail::to($user->email)->send(new LoginMail($user->name));
+            return redirect()->intended('/user/profile')->with('success', 'تم تسجيل الدخول بنجاح');
         }
         return redirect()->intended('login')->with('error','ألبيانات ألمدخله غير صحيحه.');
     }
