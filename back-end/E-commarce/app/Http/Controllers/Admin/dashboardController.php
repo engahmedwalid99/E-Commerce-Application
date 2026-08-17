@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Mail\UpdateAdminToUser;
+use App\Mail\UpdateUserToAdmin;
 use App\Models\notification;
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 
 class dashboardController
@@ -90,12 +93,23 @@ class dashboardController
         $user->update([
             'role' => $request->role,
         ]);
+
+        if($request->role == 'admin'){
+            Mail::to($user->email)->send(new UpdateUserToAdmin($user->name));
+        }
+        if($request->role == 'user'){
+            Mail::to($user->email)->send(new UpdateAdminToUser($user->name));
+        }
     
         return back()->with('success', 'تم تحديث صلاحية المستخدم بنجاح.');
     }
 
     public function view_notification(){
         return view('Extends.addNotifications');
+    }
+
+    public function view_users_notification(){
+        return view('Extends.addUsersNotifications');
     }
 
     public function admin_notification(){

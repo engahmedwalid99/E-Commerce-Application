@@ -150,7 +150,7 @@
                 @endif
 
 
-                @if (session('success'))
+                {{-- @if (session('success'))
                     <div id="successMessage"
                         class="flex items-start gap-3 rounded-2xl border border-emerald-200 bg-white p-4 shadow-xl shadow-emerald-100 transition-all duration-500">
 
@@ -180,7 +180,7 @@
                         </button>
 
                     </div>
-                @endif
+                @endif --}}
 
             </div>
 
@@ -261,10 +261,15 @@
 
                     <label class="flex items-start gap-2 text-[13px] text-muted leading-relaxed my-1.5 mb-5">
                         <input type="checkbox" name="terms" class="w-4 h-4 accent-gold mt-0.5 shrink-0">
-                        <span>
-                            أوافق على <a href="{{ route('terms') }}" class="text-navy font-semibold no-underline border-b border-gold">شروط الاستخدام</a> 
-                            و <a href="{{ route('privacy') }}" class="text-navy font-semibold no-underline border-b border-gold">سياسة الخصوصية</a>
-                        </span>
+                        <div style="display: flex; flex-direction: column !important;">
+                            <span>
+                                أوافق على <a href="{{ route('terms') }}" class="text-navy font-semibold no-underline border-b border-gold">شروط الاستخدام</a> 
+                                و <a href="{{ route('privacy') }}" class="text-navy font-semibold no-underline border-b border-gold">سياسة الخصوصية</a>
+                            </span>
+                            @error('terms')
+                                <div class="text-danger text-[12.5px] mt-1.5">{{ $message }}</div>
+                            @enderror
+                        </div>
                     </label>
 
                     <div class="mb-4">

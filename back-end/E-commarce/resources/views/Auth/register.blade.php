@@ -39,14 +39,12 @@
 
 <body class="m-0 font-cairo bg-cream text-ink">
 
-    <x-navbar/>
+    <x-navbar />
 
     <div class="grid grid-cols-1 md:grid-cols-[1.05fr_1fr] h-auto md:h-screen md:overflow-hidden" dir="ltr">
 
-        <aside
-            class="hidden md:flex relative flex-col justify-between h-screen overflow-y-auto p-14 text-white"
-            dir="rtl"
-            style="background: radial-gradient(circle at 20% 15%, #1B2140, #12162B 60%);">
+        <aside class="hidden md:flex relative flex-col justify-between h-screen overflow-y-auto p-14 text-white"
+            dir="rtl" style="background: radial-gradient(circle at 20% 15%, #1B2140, #12162B 60%);">
 
             <div class="pointer-events-none absolute inset-0 opacity-100"
                 style="background-image: url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cg fill='none' stroke='%23D4AF37' stroke-width='0.6' opacity='0.18'%3E%3Cpath d='M60 0 L90 30 L60 60 L30 30 Z'/%3E%3Cpath d='M60 60 L90 90 L60 120 L30 90 Z'/%3E%3Cpath d='M0 60 L30 30 L60 60 L30 90 Z'/%3E%3Cpath d='M60 60 L90 30 L120 60 L90 90 Z'/%3E%3C/g%3E%3C/svg%3E&quot;); background-size: 120px 120px;">
@@ -109,22 +107,23 @@
             </div>
         </aside>
 
-        <section
-            class="flex items-start justify-center h-auto md:h-screen md:overflow-y-auto px-6 py-16 bg-white"
+        <section class="flex items-start justify-center h-auto md:h-screen md:overflow-y-auto px-6 py-16 bg-white"
             dir="rtl">
 
             <div class="w-full max-w-[400px] my-auto">
                 <h2 class="font-tajawal font-extrabold text-[28px] m-0 mb-1.5">إنشاء حساب جديد</h2>
                 <p class="text-muted text-[14.5px] m-0 mb-6">
                     لديك حساب بالفعل؟
-                    <a href="{{ route('login') }}" class="text-navy font-bold no-underline border-b-[1.5px] border-gold">تسجيل الدخول</a>
+                    <a href="{{ route('login') }}"
+                        class="text-navy font-bold no-underline border-b-[1.5px] border-gold">تسجيل الدخول</a>
                 </p>
 
                 <form method="POST" action="{{ route('create_account') }}">
                     @csrf
 
                     <div class="mb-4">
-                        <label for="name" class="block text-[13.5px] font-semibold mb-1.5 text-ink">الاسم الكامل</label>
+                        <label for="name" class="block text-[13.5px] font-semibold mb-1.5 text-ink">الاسم
+                            الكامل</label>
                         <input id="name" type="text" name="name" value="{{ old('name') }}"
                             placeholder="أدخل اسمك الكامل" autofocus autocomplete="name"
                             class="w-full px-3.5 py-3 border-[1.5px] border-line rounded-xl font-cairo text-[14.5px] outline-none bg-[#FCFCFB] transition-colors focus:border-gold focus:ring-[3px] focus:ring-goldsoft focus:bg-white">
@@ -134,7 +133,8 @@
                     </div>
 
                     <div class="mb-4">
-                        <label for="email" class="block text-[13.5px] font-semibold mb-1.5 text-ink">البريد الإلكتروني</label>
+                        <label for="email" class="block text-[13.5px] font-semibold mb-1.5 text-ink">البريد
+                            الإلكتروني</label>
                         <input id="email" type="email" name="email" value="{{ old('email') }}"
                             placeholder="example@email.com" autocomplete="username"
                             class="w-full px-3.5 py-3 border-[1.5px] border-line rounded-xl font-cairo text-[14.5px] outline-none bg-[#FCFCFB] transition-colors focus:border-gold focus:ring-[3px] focus:ring-goldsoft focus:bg-white">
@@ -144,7 +144,8 @@
                     </div>
 
                     <div class="mb-4">
-                        <label for="password" class="block text-[13.5px] font-semibold mb-1.5 text-ink">كلمة المرور</label>
+                        <label for="password" class="block text-[13.5px] font-semibold mb-1.5 text-ink">كلمة
+                            المرور</label>
                         <input id="password" type="password" name="password" placeholder="••••••••"
                             autocomplete="new-password"
                             class="w-full px-3.5 py-3 border-[1.5px] border-line rounded-xl font-cairo text-[14.5px] outline-none bg-[#FCFCFB] transition-colors focus:border-gold focus:ring-[3px] focus:ring-goldsoft focus:bg-white">
@@ -154,7 +155,8 @@
                     </div>
 
                     <div class="mb-4">
-                        <label for="password_confirmation" class="block text-[13.5px] font-semibold mb-1.5 text-ink">تأكيد كلمة المرور</label>
+                        <label for="password_confirmation"
+                            class="block text-[13.5px] font-semibold mb-1.5 text-ink">تأكيد كلمة المرور</label>
                         <input id="password_confirmation" type="password" name="password_confirmation"
                             placeholder="••••••••" autocomplete="new-password"
                             class="w-full px-3.5 py-3 border-[1.5px] border-line rounded-xl font-cairo text-[14.5px] outline-none bg-[#FCFCFB] transition-colors focus:border-gold focus:ring-[3px] focus:ring-goldsoft focus:bg-white">
@@ -165,8 +167,17 @@
 
                     <label class="flex items-start gap-2 text-[13px] text-muted leading-relaxed my-1.5 mb-5">
                         <input type="checkbox" name="terms" class="w-4 h-4 accent-gold mt-0.5 shrink-0">
-                        <span>أوافق على <a href="{{ route('terms') }}" class="text-navy font-semibold no-underline border-b border-gold">شروط الاستخدام</a> و
-                            <a href="{{ route('privacy') }}" class="text-navy font-semibold no-underline border-b border-gold">سياسة الخصوصية</a></span>
+                        <div style="display: flex; flex-direction: column !important; text-align: right;">
+                            <span class="whitespace-nowrap">أوافق على <a href="{{ route('terms') }}"
+                                    class="text-navy font-semibold no-underline border-b border-gold">شروط الاستخدام</a>
+                                و
+                                <a href="{{ route('privacy') }}"
+                                    class="text-navy font-semibold no-underline border-b border-gold">سياسة
+                                    الخصوصية</a></span>
+                                    @error('terms')
+                                        <div class="text-danger text-[12.5px] mt-0 mb-5">{{ $message }}</div>
+                                    @enderror
+                        </div>
                     </label>
 
                     <div class="mb-4">
@@ -183,7 +194,8 @@
                     </button>
                 </form>
 
-                <div class="flex items-center gap-3.5 my-6 text-muted text-[13px] before:content-[''] before:flex-1 before:h-px before:bg-line after:content-[''] after:flex-1 after:h-px after:bg-line">
+                <div
+                    class="flex items-center gap-3.5 my-6 text-muted text-[13px] before:content-[''] before:flex-1 before:h-px before:bg-line after:content-[''] after:flex-1 after:h-px after:bg-line">
                     أو أنشئ حسابًا بواسطه
                 </div>
 
@@ -209,7 +221,7 @@
         </section>
     </div>
 
-    <x-footer/>
+    <x-footer />
 </body>
 
 </html>

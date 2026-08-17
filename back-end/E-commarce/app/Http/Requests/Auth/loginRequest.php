@@ -16,6 +16,8 @@ class loginRequest extends FormRequest
         return [
             'email' => ['required', 'email', 'exists:users,email'],
             'password' => ['required', 'string', 'min:8'],
+            'terms' => ['required'],
+            // 'g-recaptcha-response' => ['required']
         ];
     }
 
@@ -27,6 +29,8 @@ class loginRequest extends FormRequest
             'password.required' => 'كلمة المرور مطلوبة.',
             'password.string' => 'كلمة المرور يجب أن تكون نصية.',
             'password.min' => 'كلمة المرور يجب أن تكون على الأقل 8 أحرف.',
+            'terms.required' => 'يجب الموافقه اولا.',
+            'g-recaptcha-response.required' => 'برجاء ألتاكيد أنك لست روبوتا.',
         ];
     }
 }

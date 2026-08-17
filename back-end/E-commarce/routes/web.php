@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\OrderController as AdminOrderController;
+use App\Http\Controllers\Notifications\sendEmailsToUsers;
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CartController;
@@ -104,6 +105,9 @@ Route::middleware(['auth', 'status'])->group(function () {
         Route::get('add-notification', [dashboardController::class, 'view_notification'])->name('view_add_notification');
         Route::get('notifications-control', [dashboardController::class, 'admin_notification'])->name('adminNotification');
         Route::post('notifications', [sendNoteToUserController::class, '__invoke'])->name('send_notifications');
+
+        Route::get('send-users-notification', [dashboardController::class, 'view_users_notification'])->name('view_add_notification_to_users');
+        Route::post('send-users-notification', [sendEmailsToUsers::class, '__invoke'])->name('send.email.notification');
 
         Route::delete('delete-notification/{id}', [deleteNotofication::class, '__invoke'])->name('delete_notification');
         Route::get('update-notification/{id}', [updateNotofication::class, 'show'])->name('show_update_notification');

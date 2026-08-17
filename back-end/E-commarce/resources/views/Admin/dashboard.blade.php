@@ -245,6 +245,23 @@
                         المستخدمون
                     </a>
 
+                    <a href="{{ route('view_add_notification_to_users') }}"
+                        class="group flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-slate-300 transition hover:bg-white/5 hover:text-white">
+
+                        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                            stroke-linecap="round" stroke-linejoin="round">
+
+                            <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9" />
+                            <path d="M10 21h4" />
+
+                            <path d="M19 3v4" />
+                            <path d="M17 5h4" />
+
+                        </svg>
+
+                        أرسال بريد
+                    </a>
+
                 </div>
 
             </nav>
@@ -367,6 +384,7 @@
                 @yield('notifications')
                 @yield('adminNotification')
                 @yield('editNotification')
+                @yield('send-emails')
             </section>
 
         </main>

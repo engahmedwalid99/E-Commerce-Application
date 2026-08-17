@@ -13,44 +13,44 @@ class registerRequest extends FormRequest
         return true;
     }
     public function rules(): array
-{
-    return [
-        'name' => [
-            'required',
-            'string',
-            'min:5',
-            'max:30',
-        ],
+    {
+        return [
+            'name' => [
+                'required',
+                'string',
+                'min:5',
+                'max:30',
+            ],
 
-        'email' => [
-            'required',
-            'string',
-            'email',
-            'unique:users,email',
-        ],
+            'email' => [
+                'required',
+                'string',
+                'email',
+                'unique:users,email',
+            ],
 
-        'password' => [
-            'required',
-            'string',
-            'min:8',
-            'confirmed',
-        ],
+            'password' => [
+                'required',
+                'string',
+                'min:8',
+                'confirmed',
+            ],
 
-        'terms' => [
-            'required',
-            'accepted',
-        ],
+            'terms' => [
+                'required',
+                'accepted',
+            ],
 
-        'password_confirmation' => [
-            'required',
-            'string',
-        ],
+            'password_confirmation' => [
+                'required',
+                'string',
+            ],
 
-        'g-recaptcha-response' => [
-            'required',
-        ]
-    ];
-}
+            // 'g-recaptcha-response' => [
+            //     'required',
+            // ]
+        ];
+    }
 
 public function messages(): array
 {
@@ -70,8 +70,8 @@ public function messages(): array
         'password.min'       => 'كلمة المرور يجب أن تكون 8 أحرف على الأقل.',
         'password.confirmed' => 'تأكيد كلمة المرور غير متطابق.',
 
-        'terms.required' => 'يجب الموافقة على الشروط والأحكام.',
-        'terms.accepted' => 'يجب الموافقة على الشروط والأحكام.',
+        'terms.required' => 'يجب الموافقه اولا.',
+        'terms.accepted' => 'يجب الموافقه اولا.',
 
         'password_confirmation.required' => 'تأكيد كلمة المرور مطلوب.',
         'password_confirmation.string'   => 'تأكيد كلمة المرور يجب أن يكون نصًا.',
