@@ -212,11 +212,11 @@
                     <a href="{{ route('product_details', $item->id) }}">
                         <div class="relative aspect-square flex items-center justify-center bg-[#F3ECDD]">
                             @if ($item->sale_price && $item->sale_price < $item->price)
-                                <span class="absolute top-3 right-3 bg-danger text-white text-[10px] sm:text-[11px] font-bold px-2.5 py-1 rounded-full">
+                                <span class="prod-tag sale">
                                     خصم
                                     {{ round((($item->price - $item->sale_price) / $item->price) * 100) }}%
                                 </span>
-                            @endif
+                             @endif
                             @if ($item->image)
                                 <div class="overflow-hidden w-full h-full">
                                     <img class="w-full h-full object-cover" src="{{ $item->image }}" alt="{{ $item->name }}">
