@@ -127,12 +127,12 @@
                         </h3>
                         <div class="flex items-center gap-4">
                             <span class="text-3xl font-bold text-[#b08a35]">
-                                {{ number_format($product->price ?? $product->price, 2) }}
+                                {{ number_format($product->sale_price ?? $product->sale_price, 2) }}
                             </span>
 
                             @if ($product->sale_price && $product->sale_price < $product->price)
                                 <span class="text-lg text-gray-400 line-through">
-                                    {{ number_format($product->sale_price, 2) }}
+                                    {{ number_format($product->price, 2) }}
                                 </span>
                             @endif
                         </div>
