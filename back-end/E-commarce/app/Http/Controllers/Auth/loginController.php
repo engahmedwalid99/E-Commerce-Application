@@ -22,7 +22,7 @@ class loginController
         if (Auth::attempt($credentials)) {
             $user = Auth::user();
             if ($user->role === 'admin') {
-                return redirect()->intended('/dashboard');
+                return redirect()->intended('/admin/content');
             }
             
             // Mail::to($user->email)->send(new LoginMail($user->name));
