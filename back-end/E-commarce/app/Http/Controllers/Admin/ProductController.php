@@ -84,6 +84,7 @@ class ProductController extends Controller
 
         $imageUrl = $product->image;
 
+
         if ($request->hasFile('image')) {
 
             if ($product->image && Storage::disk('public')->exists($product->image)) {
