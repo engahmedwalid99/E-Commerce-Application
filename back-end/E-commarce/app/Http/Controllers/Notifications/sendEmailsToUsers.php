@@ -2,29 +2,27 @@
 
 namespace App\Http\Controllers\Notifications;
 
-use Resend;
 use App\Models\User;
+use Illuminate\Support\Facades\Mail;
 use App\Http\Requests\Notifications\sendNotificationRequest;
+use App\Mail\SendNotificationToUsers;
 
 class sendEmailsToUsers
 {
-
     public function __invoke(sendNotificationRequest $request)
     {
         $users = User::whereNotNull('email')->get();
 
         try {
 
-            $resend = Resend::client(env('RESEND_API_KEY'));
-
             foreach ($users as $user) {
 
-                $resend->emails->send([
-                    'from' => 'onboarding@resend.dev',
-                    'to' => $user->email,
-                    'subject' => $request->name,
-                    'html' => $request->description,
-                ]);
+                Mail::to($user->email)->send(
+                    new SendNotificationToUsers(
+                        $request->name,
+                        $request->description
+                    )
+                );
             }
 
             return redirect()

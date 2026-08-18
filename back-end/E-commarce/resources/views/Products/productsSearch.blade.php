@@ -122,7 +122,6 @@
 
         @if ($products->total() > 0)
 
-            {{-- Header --}}
             <div
                 class="mb-8 flex flex-col gap-4 border-b border-[#eee8da] pb-5 sm:flex-row sm:items-center sm:justify-between">
 
@@ -148,7 +147,6 @@
             </div>
 
 
-            {{-- Products --}}
             <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
 
                 @foreach ($products as $index => $item)
@@ -166,24 +164,17 @@
 
 
                     <div class="group relative animate-fadeUp" style="animation-delay: {{ $index * 80 }}ms;">
-
                         <div
                             class="absolute -inset-1 rounded-[26px] bg-gradient-to-r from-[#b8912b]/20 via-transparent to-[#172033]/10 opacity-0 blur-xl transition duration-500 group-hover:opacity-100">
                         </div>
 
-
                         <div
                             class="relative overflow-hidden rounded-[24px] border border-[#eee8da] bg-white shadow-sm transition-all duration-500 ease-out group-hover:-translate-y-2">
 
-
-                            {{-- Image --}}
                             <a href="{{ route('product_details', $item->id) }}" class="relative block">
 
                                 <div
                                     class="relative flex h-[290px] items-center justify-center overflow-hidden bg-[#f3ecdd]">
-
-
-                                    {{-- Discount --}}
                                     @if ($hasSale)
                                         <div
                                             class="absolute right-4 top-4 z-20 rounded-full bg-[#b8912b] px-3 py-1.5 text-xs font-bold text-white shadow-lg">
@@ -193,10 +184,8 @@
                                         </div>
                                     @endif
 
-
-                                    {{-- Product Image --}}
                                     @if ($item->image)
-                                        <img src="{{ $item->image }}" alt="{{ $item->name }}" loading="lazy"
+                                        <img src="{{ asset('storage/' . $item->image) }} alt="{{ $item->name }}" loading="lazy"
                                             class="relative z-10 h-full w-full object-contain p-6 transition duration-700 ease-out group-hover:scale-110">
                                     @else
                                         <div class="flex flex-col items-center gap-3 text-[#b8912b]">
@@ -222,8 +211,6 @@
                                         </div>
                                     @endif
 
-
-                                    {{-- Overlay --}}
                                     <div
                                         class="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent opacity-0 transition duration-500 group-hover:opacity-100">
                                     </div>
@@ -232,12 +219,8 @@
 
                             </a>
 
-
-                            {{-- Product Info --}}
                             <div class="p-5">
 
-
-                                {{-- Category --}}
                                 <div class="mb-2 flex items-center gap-2">
 
                                     <span class="h-1.5 w-1.5 rounded-full bg-[#b8912b]">
@@ -251,8 +234,6 @@
 
                                 </div>
 
-
-                                {{-- Name --}}
                                 <a href="{{ route('product_details', $item->id) }}">
 
                                     <h3
@@ -267,8 +248,6 @@
 
                                 <div class="my-4 h-px bg-[#eee8da]"></div>
 
-
-                                {{-- Price + Cart --}}
                                 <div class="flex items-end justify-between gap-3">
 
                                     <div>
@@ -315,8 +294,6 @@
 
                                     </div>
 
-
-                                    {{-- Cart --}}
                                     <form action="{{ route('cart.add', $item->id) }}" method="POST">
 
                                         @csrf
@@ -347,13 +324,10 @@
 
             </div>
 
-
-            {{-- Pagination --}}
             <div class="mt-12">
                 {{ $products->links() }}
             </div>
         @else
-            {{-- Empty State --}}
             <div
                 class="relative overflow-hidden rounded-[30px] border border-[#eee8da] bg-white px-6 py-24 text-center shadow-sm">
 

@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\ProductRequest;
 use App\Models\Product;
-use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -22,13 +22,7 @@ class ProductController extends Controller
         $imageUrl = null;
 
         if ($request->hasFile('image')) {
-
-            $imageUrl = Cloudinary::upload(
-                $request->file('image')->getRealPath(),
-                [
-                    'folder' => 'ecommerce/products',
-                ]
-            )->getSecurePath();
+            $imageUrl = $request->file('image')->store('products', 'public');
         }
 
         Product::create([
@@ -69,7 +63,7 @@ class ProductController extends Controller
         $products = Product::paginate(20);
 
         return view('Extends.showProducts', [
-            'products' => $products
+            'products' => $products,
         ]);
     }
 
@@ -78,7 +72,7 @@ class ProductController extends Controller
         $product = Product::findOrFail($id);
 
         return view('Extends.updateProduct', [
-            'product' => $product
+            'product' => $product,
         ]);
     }
 
@@ -92,12 +86,11 @@ class ProductController extends Controller
 
         if ($request->hasFile('image')) {
 
-            $imageUrl = Cloudinary::upload(
-                $request->file('image')->getRealPath(),
-                [
-                    'folder' => 'ecommerce/products',
-                ]
-            )->getSecurePath();
+            if ($product->image && Storage::disk('public')->exists($product->image)) {
+                Storage::disk('public')->delete($product->image);
+            }
+
+            $imageUrl = $request->file('image')->store('products', 'public');
         }
 
         $product->update([
@@ -149,15 +142,16 @@ class ProductController extends Controller
         $product = Product::findOrFail($id);
 
         return view('Products.productDetails', [
-            'product' => $product
+            'product' => $product,
         ]);
     }
 
     public function all_products()
     {
         $all_products = Product::paginate(20);
+
         return view('Products.allProducts', [
-            'products' => $all_products
+            'products' => $all_products,
         ]);
     }
 
