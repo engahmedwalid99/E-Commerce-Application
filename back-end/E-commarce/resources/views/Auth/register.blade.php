@@ -35,6 +35,14 @@
             }
         }
     </script>
+
+    <style>
+        @media screen and (max-width: 650px) {
+            .create-account {
+                margin-top: -50px;
+            }
+        }
+    </style>
 </head>
 
 <body class="m-0 font-cairo bg-cream text-ink">
@@ -110,7 +118,7 @@
         <section class="flex items-start justify-center h-auto md:h-screen md:overflow-y-auto px-6 py-16 bg-white"
             dir="rtl">
 
-            <div class="w-full max-w-[400px] my-auto mt-[-20px]">
+            <div class="w-full max-w-[400px] my-auto max-[650px]:mt-[-45px]">
                 <h2 class="font-tajawal font-extrabold text-[28px] m-0 mb-1.5">إنشاء حساب جديد</h2>
                 <p class="text-muted text-[14.5px] m-0 mb-6">
                     لديك حساب بالفعل؟
@@ -174,9 +182,9 @@
                                 <a href="{{ route('privacy') }}"
                                     class="text-navy font-semibold no-underline border-b border-gold">سياسة
                                     الخصوصية</a></span>
-                                    @error('terms')
-                                        <div class="text-danger text-[12.5px] mt-0 mb-5">{{ $message }}</div>
-                                    @enderror
+                            @error('terms')
+                                <div class="text-danger text-[12.5px] mt-0 mb-5">{{ $message }}</div>
+                            @enderror
                         </div>
                     </label>
 
