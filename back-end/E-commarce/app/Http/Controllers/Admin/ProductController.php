@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\ProductRequest;
 use App\Models\Product;
+use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -22,7 +22,12 @@ class ProductController extends Controller
         $imageUrl = null;
 
         if ($request->hasFile('image')) {
-            $imageUrl = $request->file('image')->store('products', 'public');
+            $imageUrl = Cloudinary::upload(
+                $request->file('image')->getRealPath(),
+                [
+                    'folder' => 'ecommerce/products',
+                ]
+            )->getSecurePath();
         }
 
         Product::create([
@@ -84,14 +89,14 @@ class ProductController extends Controller
 
         $imageUrl = $product->image;
 
-
         if ($request->hasFile('image')) {
 
-            if ($product->image && Storage::disk('public')->exists($product->image)) {
-                Storage::disk('public')->delete($product->image);
-            }
-
-            $imageUrl = $request->file('image')->store('products', 'public');
+            $imageUrl = Cloudinary::upload(
+                $request->file('image')->getRealPath(),
+                [
+                    'folder' => 'ecommerce/products',
+                ]
+            )->getSecurePath();
         }
 
         $product->update([

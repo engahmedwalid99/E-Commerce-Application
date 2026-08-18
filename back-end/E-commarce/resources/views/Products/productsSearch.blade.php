@@ -185,7 +185,7 @@
                                     @endif
 
                                     @if ($item->image)
-                                        <img src="{{ asset('storage/' . $item->image) }} alt="{{ $item->name }}" loading="lazy"
+                                        <img src="{{ $product->image }}" alt="{{ $item->name }}" loading="lazy"
                                             class="relative z-10 h-full w-full object-contain p-6 transition duration-700 ease-out group-hover:scale-110">
                                     @else
                                         <div class="flex flex-col items-center gap-3 text-[#b8912b]">

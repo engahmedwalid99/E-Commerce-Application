@@ -263,7 +263,7 @@
                             @endif
 
                             @if ($item->image)
-                                <img src="{{ asset('storage/' . $item->image) }}" alt="{{ $item->name }}"
+                                <img  src="{{ $item->image }}" alt="{{ $item->name }}"
                                     loading="lazy"
                                     class="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-110">
                             @else
