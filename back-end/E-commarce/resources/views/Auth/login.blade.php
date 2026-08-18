@@ -213,7 +213,7 @@
                 }, 4000);
             </script>
 
-            <div class="w-full max-w-[400px] my-auto am:mt-[-20px] md:h-[100vh]">
+            <div class="w-full max-w-[400px] my-auto am:mt-[-20px] md:h-[100vh] max-[650px]:mt-[-55px]">
                 <h2 class="font-tajawal font-extrabold text-[28px] m-0 mb-1.5">تسجيل الدخول</h2>
                 <p class="text-muted text-[14.5px] m-0 mb-6">
                     ليس لديك حساب؟
