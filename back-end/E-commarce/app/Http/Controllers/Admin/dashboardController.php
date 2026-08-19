@@ -94,12 +94,12 @@ class dashboardController
             'role' => $request->role,
         ]);
 
-        if($request->role == 'admin'){
-            Mail::to($user->email)->send(new UpdateUserToAdmin($user->name));
-        }
-        if($request->role == 'user'){
-            Mail::to($user->email)->send(new UpdateAdminToUser($user->name));
-        }
+        // if($request->role == 'admin'){
+        //    Mail::to($user->email)->send(new UpdateUserToAdmin($user->name));
+        // }
+        //if($request->role == 'user'){
+        //    Mail::to($user->email)->send(new UpdateAdminToUser($user->name));
+        //}
     
         return back()->with('success', 'تم تحديث صلاحية المستخدم بنجاح.');
     }
