@@ -82,11 +82,11 @@ class ProductController extends Controller
         ]);
     }
 
-    public function update_product(ProductRequest $request, $id)
+    public function update_product(ProductRequest $request)
     {
         $data = $request->validated();
 
-        $product = Product::findOrFail($id);
+        $product = Product::findOrFail($request->id);
 
         $imageUrl = $product->image;
 
