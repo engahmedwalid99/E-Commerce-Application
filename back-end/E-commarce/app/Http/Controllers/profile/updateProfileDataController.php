@@ -7,13 +7,14 @@ use App\Http\Requests\profile\updateProfileDataRequest;
 class updateProfileDataController
 {
     public function update(updateProfileDataRequest $request){
+        $user = auth()->user();
         try {
             $data = $request->validated();
-            auth()->user()->name = $data['name'];
-            auth()->user()->email = $data['email'];
-            auth()->user()->phone = $data['phone'];
-            auth()->user()->city = $data['city'];
-            auth()->user()->save();
+            $user->name = $data['name'];
+            $user->email = $data['email'];
+            $user->phone = $data['phone'];
+            $user->city = $data['city'];
+            $user->save();
             return redirect()->back()->with('success', 'تم تحديث البيانات الشخصية بنجاح');
         } catch (\Throwable $th) {
             return redirect()->back()->with('error', 'حدث خطأ أثناء تحديث البيانات الشخصية');

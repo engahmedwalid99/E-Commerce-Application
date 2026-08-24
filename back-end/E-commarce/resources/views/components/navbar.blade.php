@@ -267,7 +267,7 @@
             @guest
 
                 <a href="{{ route('register') }}"
-                    class="hidden h-10 items-center gap-2 rounded-xl bg-gray-900 px-4 text-xs font-bold text-white shadow-sm transition duration-200 hover:bg-black sm:flex">
+                    class="hidden h-10 items-center gap-2 rounded-xl bg-gray-900 px-4 text-xs font-bold text-white shadow-sm transition duration-200 hover:bg-black sm:flex md:hidden">
                     <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
                         <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" />
                         <path d="m10 17 5-5-5-5" />
@@ -412,7 +412,7 @@
 
                 <div class="border-t border-gray-100 pt-3">
 
-                    <a href=""
+                    <a href="{{ route('login') }}"
                         class="flex items-center justify-center gap-2 rounded-xl bg-gray-900 px-4 py-3 text-sm font-bold text-white transition hover:bg-black">
 
                         <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"

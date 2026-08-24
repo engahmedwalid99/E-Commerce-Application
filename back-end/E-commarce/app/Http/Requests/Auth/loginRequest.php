@@ -17,7 +17,7 @@ class loginRequest extends FormRequest
             'email' => ['required', 'email', 'exists:users,email'],
             'password' => ['required', 'string', 'min:8'],
             'terms' => ['required'],
-            // 'g-recaptcha-response' => ['required']
+            'g-recaptcha-response' => ['required']
         ];
     }
 

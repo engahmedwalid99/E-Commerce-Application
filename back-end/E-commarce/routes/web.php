@@ -96,7 +96,7 @@ Route::middleware(['auth', 'status'])->group(function () {
         Route::get('/orders', [ordersController::class, 'index'])->name('admin.orders.index');
         Route::get('/orders/{id}', [ordersController::class, 'show'])->name('admin.orders.show');
         Route::put('/orders/{id}/status', [ordersController::class, 'updateStatus'])->name('admin.orders.updateStatus');
-
+  
         Route::get('users', [dashboardController::class, 'users'])->name('view.users');
         Route::delete('delete_user/{id}', [dashboardController::class, 'delete_user'])->name('delete_user');
         Route::post('active-user/{id}', [dashboardController::class,'active_user'])->name('active-user');

@@ -9,10 +9,11 @@ use Illuminate\Support\Facades\Hash;
 class updatePasswordController
 {
     public function update(updatePasswordRequest $request){
+        $user = auth()->user();
         $data = $request->validated();
         if(Hash::check($data['old_password'], auth()->user()->password)){
-            auth()->user()->password = Hash::make($data['new_password']);
-            auth()->user()->save();
+            $user->password = Hash::make($data['new_password']);
+            $user->save();
             return redirect()->route('user.profile')->with('success','تم تحديث كلمة المرور بنجاح');
         } else {
             return redirect()->route('user.profile')->with('error','كلمة المرور الحالية غير صحيحة');
