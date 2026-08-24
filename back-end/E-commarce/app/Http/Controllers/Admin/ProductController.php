@@ -69,7 +69,7 @@ class ProductController extends Controller
         $products = Product::paginate(20);
 
         return view('Extends.showProducts', [
-            'products' => $products
+            'products' => $products,
         ]);
     }
 
@@ -78,7 +78,7 @@ class ProductController extends Controller
         $product = Product::findOrFail($id);
 
         return view('Extends.updateProduct', [
-            'product' => $product
+            'product' => $product,
         ]);
     }
 
@@ -100,33 +100,28 @@ class ProductController extends Controller
             )->getSecurePath();
         }
 
-        $product->update([
-            'name' => trim($data['name']),
+        $product->name = trim($data['name']);
 
-            'description' => isset($data['description'])
-                ? trim($data['description'])
-                : null,
+        $product->description = isset($data['description']) ? trim($data['description']) : null;
 
-            'brand' => isset($data['brand'])
-                ? trim($data['brand'])
-                : null,
+        $product->brand = isset($data['brand']) ? trim($data['brand']) : null;
 
-            'price' => $data['price'],
+        $product->price = $data['price'];
 
-            'sale_price' => $data['sale_price'] ?? null,
+        $product->sale_price = $data['sale_price'] ?? null;
 
-            'stock' => $data['stock'],
+        $product->stock = $data['stock'];
 
-            'sku' => trim($data['sku']),
+        $product->sku = trim($data['sku']);
 
-            'category_id' => $data['category_id'],
+        $product->category_id = $data['category_id'];
 
-            'status' => $data['status'],
+        $product->status = $data['status'];
 
-            'is_featured' => $data['is_featured'],
+        $product->is_featured = $data['is_featured'];
 
-            'image' => $imageUrl,
-        ]);
+        $product->image = $imageUrl;
+
         $product->save();
 
         return redirect()
@@ -150,15 +145,16 @@ class ProductController extends Controller
         $product = Product::findOrFail($id);
 
         return view('Products.productDetails', [
-            'product' => $product
+            'product' => $product,
         ]);
     }
 
     public function all_products()
     {
         $all_products = Product::paginate(20);
+
         return view('Products.allProducts', [
-            'products' => $all_products
+            'products' => $all_products,
         ]);
     }
 
