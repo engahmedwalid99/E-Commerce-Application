@@ -40,7 +40,7 @@
             <form
                 method="POST"
                 enctype="multipart/form-data"
-                action="{{ route('update_product') }}">
+                action="{{ route('update_product', $product->id) }}">
                 @csrf
                 <div class="grid grid-cols-1 gap-5 md:grid-cols-2">
 
