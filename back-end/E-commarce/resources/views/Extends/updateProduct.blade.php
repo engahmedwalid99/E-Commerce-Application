@@ -12,6 +12,8 @@
 التعديل علي تفاصيل المنتج
 @endsection
 
+
+
 @section('edit_product')
 
     <div class="mt-6 rounded-2xl border border-line bg-white shadow-soft">
@@ -27,6 +29,8 @@
                     تعديل بيانات المنتج: {{ $product->name }}
                 </p>
             </div>
+
+            <x-success/>
 
             <span class="rounded-full bg-amber-50 px-3 py-1 text-[11px] font-extrabold text-amber-700">
                 تعديل المنتج

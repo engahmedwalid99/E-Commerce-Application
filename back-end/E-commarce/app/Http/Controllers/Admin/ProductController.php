@@ -127,6 +127,7 @@ class ProductController extends Controller
 
             'image' => $imageUrl,
         ]);
+        $product->save();
 
         return redirect()
             ->route('show_products')
