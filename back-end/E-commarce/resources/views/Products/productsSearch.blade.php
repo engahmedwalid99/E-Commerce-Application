@@ -122,7 +122,6 @@
 
         @if ($products->total() > 0)
 
-            {{-- Header --}}
             <div
                 class="mb-8 flex flex-col gap-4 border-b border-[#eee8da] pb-5 sm:flex-row sm:items-center sm:justify-between">
 
@@ -148,7 +147,6 @@
             </div>
 
 
-            {{-- Products --}}
             <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
 
                 @foreach ($products as $index => $item)
@@ -164,204 +162,189 @@
                         $displayPrice = $hasSale ? $salePrice : $price;
                     @endphp
 
+                    @if ($item->status != 'hidden')
+                        <div class="group relative animate-fadeUp" style="animation-delay: {{ $index * 80 }}ms;">
 
-                    <div class="group relative animate-fadeUp" style="animation-delay: {{ $index * 80 }}ms;">
-
-                        <div
-                            class="absolute -inset-1 rounded-[26px] bg-gradient-to-r from-[#b8912b]/20 via-transparent to-[#172033]/10 opacity-0 blur-xl transition duration-500 group-hover:opacity-100">
-                        </div>
-
-
-                        <div
-                            class="relative overflow-hidden rounded-[24px] border border-[#eee8da] bg-white shadow-sm transition-all duration-500 ease-out group-hover:-translate-y-2">
+                            <div
+                                class="absolute -inset-1 rounded-[26px] bg-gradient-to-r from-[#b8912b]/20 via-transparent to-[#172033]/10 opacity-0 blur-xl transition duration-500 group-hover:opacity-100">
+                            </div>
 
 
-                            {{-- Image --}}
-                            <a href="{{ route('product_details', $item->id) }}" class="relative block">
-
-                                <div
-                                    class="relative flex h-[290px] items-center justify-center overflow-hidden bg-[#f3ecdd]">
+                            <div
+                                class="relative overflow-hidden rounded-[24px] border border-[#eee8da] bg-white shadow-sm transition-all duration-500 ease-out group-hover:-translate-y-2">
 
 
-                                    {{-- Discount --}}
-                                    @if ($hasSale)
-                                        <div
-                                            class="absolute right-4 top-4 z-20 rounded-full bg-[#b8912b] px-3 py-1.5 text-xs font-bold text-white shadow-lg">
+                                <a href="{{ route('product_details', $item->id) }}" class="relative block">
 
-                                            خصم {{ $discount }}%
-
-                                        </div>
-                                    @endif
-
-
-                                    {{-- Product Image --}}
-                                    @if ($item->image)
-                                        <img src="{{ $item->image }}" alt="{{ $item->name }}" loading="lazy"
-                                            class="relative z-10 h-full w-full object-contain p-6 transition duration-700 ease-out group-hover:scale-110">
-                                    @else
-                                        <div class="flex flex-col items-center gap-3 text-[#b8912b]">
-
-                                            <div
-                                                class="flex h-24 w-24 items-center justify-center rounded-3xl bg-white/60">
-
-                                                <svg class="h-12 w-12" viewBox="0 0 24 24" fill="none"
-                                                    stroke="currentColor" stroke-width="1.4">
-
-                                                    <rect x="3" y="8" width="18" height="12" rx="2" />
-
-                                                    <path d="M8 8V6a4 4 0 0 1 8 0v2" />
-
-                                                </svg>
-
-                                            </div>
-
-                                            <span class="text-xs font-semibold">
-                                                لا توجد صورة
-                                            </span>
-
-                                        </div>
-                                    @endif
-
-
-                                    {{-- Overlay --}}
-                                    <div
-                                        class="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent opacity-0 transition duration-500 group-hover:opacity-100">
-                                    </div>
-
-                                </div>
-
-                            </a>
-
-
-                            {{-- Product Info --}}
-                            <div class="p-5">
-
-
-                                {{-- Category --}}
-                                <div class="mb-2 flex items-center gap-2">
-
-                                    <span class="h-1.5 w-1.5 rounded-full bg-[#b8912b]">
-                                    </span>
-
-                                    <span class="text-xs font-bold text-[#b8912b]">
-
-                                        {{ $item->category_id }}
-
-                                    </span>
-
-                                </div>
-
-
-                                {{-- Name --}}
-                                <a href="{{ route('product_details', $item->id) }}">
-
-                                    <h3
-                                        class="min-h-[52px] text-base font-extrabold leading-7 text-[#172033] transition-colors duration-300 group-hover:text-[#b8912b]">
-
-                                        {{ $item->name }}
-
-                                    </h3>
-
-                                </a>
-
-
-                                <div class="my-4 h-px bg-[#eee8da]"></div>
-
-
-                                {{-- Price + Cart --}}
-                                <div class="flex items-end justify-between gap-3">
-
-                                    <div>
-
-                                        <p class="mb-1 text-[11px] text-gray-400">
-                                            السعر
-                                        </p>
-
-                                        <div class="flex items-baseline gap-1">
-
-                                            <span class="text-xl font-extrabold text-[#172033]">
-
-                                                {{ number_format($displayPrice, 2) }}
-
-                                            </span>
-
-                                            <span class="text-[11px] font-semibold text-gray-400">
-
-                                                EGP
-
-                                            </span>
-
-                                        </div>
+                                    <div class="relative flex h-[290px] items-center justify-center overflow-hidden bg-[#f3ecdd]">
 
 
                                         @if ($hasSale)
-                                            <div class="mt-1 flex items-center gap-2">
+                                            <div
+                                                class="absolute right-4 top-4 z-20 rounded-full bg-[#b8912b] px-3 py-1.5 text-xs font-bold text-white shadow-lg">
 
-                                                <span class="text-xs text-gray-400 line-through">
+                                                خصم {{ $discount }}%
 
-                                                    {{ number_format($price, 2) }}
-                                                    EGP
+                                            </div>
+                                        @endif
 
-                                                </span>
 
-                                                <span class="text-[10px] font-bold text-green-600">
+                                        @if ($item->image)
+                                            <img src="{{ $item->image }}" alt="{{ $item->name }}" loading="lazy"
+                                                class="relative z-10 h-full w-full object-contain p-6 transition duration-700 ease-out group-hover:scale-110">
+                                        @else
+                                            <div class="flex flex-col items-center gap-3 text-[#b8912b]">
 
-                                                    وفر {{ $discount }}%
+                                                <div class="flex h-24 w-24 items-center justify-center rounded-3xl bg-white/60">
 
+                                                    <svg class="h-12 w-12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                        stroke-width="1.4">
+
+                                                        <rect x="3" y="8" width="18" height="12" rx="2" />
+
+                                                        <path d="M8 8V6a4 4 0 0 1 8 0v2" />
+
+                                                    </svg>
+
+                                                </div>
+
+                                                <span class="text-xs font-semibold">
+                                                    لا توجد صورة
                                                 </span>
 
                                             </div>
                                         @endif
 
+
+                                        <div
+                                            class="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent opacity-0 transition duration-500 group-hover:opacity-100">
+                                        </div>
+
+                                    </div>
+
+                                </a>
+
+
+                                <div class="p-5">
+
+
+                                    <div class="mb-2 flex items-center gap-2">
+
+                                        <span class="h-1.5 w-1.5 rounded-full bg-[#b8912b]">
+                                        </span>
+
+                                        <span class="text-xs font-bold text-[#b8912b]">
+
+                                            {{ $item->category_id }}
+
+                                        </span>
+
                                     </div>
 
 
-                                    {{-- Cart --}}
-                                    <form action="{{ route('cart.add', $item->id) }}" method="POST">
+                                    <a href="{{ route('product_details', $item->id) }}">
 
-                                        @csrf
+                                        <h3
+                                            class="min-h-[52px] text-base font-extrabold leading-7 text-[#172033] transition-colors duration-300 group-hover:text-[#b8912b]">
 
-                                        <button type="submit" title="إضافة إلى السلة"
-                                            class="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#172033] text-white shadow-lg transition-all duration-300 hover:scale-105 hover:bg-[#b8912b] active:scale-95">
+                                            {{ $item->name }}
 
-                                            <svg class="h-5 w-5" fill="none" stroke="currentColor"
-                                                viewBox="0 0 24 24">
+                                        </h3>
 
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"
-                                                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2 2h12m-9 4a1 1 0 100-2 1 1 0 000 2zm8 0a1 1 0 100-2 1 1 0 000 2z" />
+                                    </a>
 
-                                            </svg>
 
-                                        </button>
+                                    <div class="my-4 h-px bg-[#eee8da]"></div>
 
-                                    </form>
+
+                                    <div class="flex items-end justify-between gap-3">
+
+                                        <div>
+
+                                            <p class="mb-1 text-[11px] text-gray-400">
+                                                السعر
+                                            </p>
+
+                                            <div class="flex items-baseline gap-1">
+
+                                                <span class="text-xl font-extrabold text-[#172033]">
+
+                                                    {{ number_format($displayPrice, 2) }}
+
+                                                </span>
+
+                                                <span class="text-[11px] font-semibold text-gray-400">
+
+                                                    EGP
+
+                                                </span>
+
+                                            </div>
+
+
+                                            @if ($hasSale)
+                                                <div class="mt-1 flex items-center gap-2">
+
+                                                    <span class="text-xs text-gray-400 line-through">
+
+                                                        {{ number_format($price, 2) }}
+                                                        EGP
+
+                                                    </span>
+
+                                                    <span class="text-[10px] font-bold text-green-600">
+
+                                                        وفر {{ $discount }}%
+
+                                                    </span>
+
+                                                </div>
+                                            @endif
+
+                                        </div>
+
+
+                                        <form action="{{ route('cart.add', $item->id) }}" method="POST">
+
+                                            @csrf
+
+                                            <button type="submit" title="إضافة إلى السلة"
+                                                class="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#172033] text-white shadow-lg transition-all duration-300 hover:scale-105 hover:bg-[#b8912b] active:scale-95">
+
+                                                <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"
+                                                        d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2 2h12m-9 4a1 1 0 100-2 1 1 0 000 2zm8 0a1 1 0 100-2 1 1 0 000 2z" />
+
+                                                </svg>
+
+                                            </button>
+
+                                        </form>
+
+                                    </div>
 
                                 </div>
 
                             </div>
 
                         </div>
-
-                    </div>
+                    @endif
                 @endforeach
 
             </div>
 
 
-            {{-- Pagination --}}
             <div class="mt-12">
                 {{ $products->links() }}
             </div>
         @else
-            {{-- Empty State --}}
             <div
                 class="relative overflow-hidden rounded-[30px] border border-[#eee8da] bg-white px-6 py-24 text-center shadow-sm">
 
-                <div
-                    class="mx-auto flex h-24 w-24 items-center justify-center rounded-[28px] bg-[#faf7ef] text-[#b58b3a]">
+                <div class="mx-auto flex h-24 w-24 items-center justify-center rounded-[28px] bg-[#faf7ef] text-[#b58b3a]">
 
-                    <svg class="h-12 w-12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-width="1.5">
+                    <svg class="h-12 w-12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
 
                         <path d="M6.5 8.5h11l1.1 11H5.4l1.1-11Z" />
 
