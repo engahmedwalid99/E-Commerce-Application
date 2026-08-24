@@ -1,13 +1,23 @@
-<header class="sticky top-0 z-50 w-full border-b border-gray-200/80 bg-white/95 shadow-sm backdrop-blur-xl"
-    dir="rtl">
+<style>
+    @media screen and (max-width: 1024px) {
+        .create_account {
+            display: none;
+        }
+    }
+
+    ::-webkit-scrollbar {
+        display: none !important;
+    }
+</style>
+
+<header class="sticky top-0 z-50 w-full border-b border-gray-200/80 bg-white/95 shadow-sm backdrop-blur-xl" dir="rtl">
     <div class="mx-auto flex min-h-[74px] w-full max-w-[1500px] items-center gap-3 px-4 sm:px-6 lg:gap-5">
         <a href="{{ route('home') }}" class="group flex shrink-0 items-center gap-2.5">
 
             <svg class="h-11 w-11 group-hover:rotate-1" viewBox="0 0 64 64" fill="none"
                 xmlns="http://www.w3.org/2000/svg">
                 <defs>
-                    <linearGradient id="diwanLogoGradient" x1="8" y1="8" x2="56" y2="56"
-                        gradientUnits="userSpaceOnUse">
+                    <linearGradient id="diwanLogoGradient" x1="8" y1="8" x2="56" y2="56" gradientUnits="userSpaceOnUse">
                         <stop stop-color="#111827" />
                         <stop offset="1" stop-color="#374151" />
                     </linearGradient>
@@ -93,7 +103,8 @@
                     <circle cx="11" cy="11" r="7" />
                     <path d="m20 20-4-4" />
                 </svg>
-                <input type="search" placeholder="ابحث عن منتج..." name="user_input" class="h-11 w-full rounded-2xl border border-gray-200 bg-gray-50/80 pr-12 pl-4 text-xs text-gray-700 outline-none transition duration-200 placeholder:text-gray-400 focus:border-gray-300 focus:bg-white focus:ring-4 focus:ring-gray-100">
+                <input type="search" placeholder="ابحث عن منتج..." name="user_input"
+                    class="h-11 w-full rounded-2xl border border-gray-200 bg-gray-50/80 pr-12 pl-4 text-xs text-gray-700 outline-none transition duration-200 placeholder:text-gray-400 focus:border-gray-300 focus:bg-white focus:ring-4 focus:ring-gray-100">
             </form>
         </div>
         <div class="flex shrink-0 items-center gap-1 sm:gap-2">
@@ -179,8 +190,7 @@
 
                         <a href="{{ route('user.profile') }}"
                             class="flex items-center gap-3 rounded-xl px-3 py-3 text-sm text-gray-600 transition hover:bg-gray-50 hover:text-gray-900">
-                            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="1.7">
+                            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
                                 <circle cx="12" cy="8" r="4" />
                                 <path d="M4 21c0-4 3.6-7 8-7s8 3 8 7" />
                             </svg>
@@ -191,8 +201,7 @@
 
                         <a href="{{ route('orders.index') }}"
                             class="flex items-center gap-3 rounded-xl px-3 py-3 text-sm text-gray-600 transition hover:bg-gray-50 hover:text-gray-900">
-                            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="1.7">
+                            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
                                 <path d="M3 6h18" />
                                 <path d="M5 6v14h14V6" />
                                 <path d="M9 10v6" />
@@ -206,8 +215,7 @@
 
                         {{-- <a href="#"
                             class="flex items-center gap-3 rounded-xl px-3 py-3 text-sm text-gray-600 transition hover:bg-gray-50 hover:text-gray-900">
-                            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="1.7">
+                            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
                                 <path
                                     d="M20.8 4.6c-1.9-1.6-4.7-1.4-6.4.4L12 7.4l-2.4-2.4c-1.7-1.8-4.5-2-6.4-.4-2.1 1.8-2.2 5-.3 6.9L12 21l9.1-9.5c1.9-1.9 1.8-5.1-.3-6.9Z" />
                             </svg>
@@ -220,8 +228,8 @@
                                 <a href="{{ route('dashboard') }}"
                                     class="flex items-center gap-3 rounded-xl px-3 py-3 text-sm text-gray-600 transition hover:bg-gray-50 hover:text-gray-900">
 
-                                    <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                        stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                    <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                                        stroke-linecap="round" stroke-linejoin="round">
 
                                         <rect x="3" y="3" width="7" height="7" rx="1" />
                                         <rect x="14" y="3" width="7" height="7" rx="1" />
@@ -267,7 +275,7 @@
             @guest
 
                 <a href="{{ route('register') }}"
-                    class="hidden h-10 items-center gap-2 rounded-xl bg-gray-900 px-4 text-xs font-bold text-white shadow-sm transition duration-200 hover:bg-black sm:flex md:hidden">
+                    class="hidden create_account h-10 items-center gap-2 rounded-xl bg-gray-900 px-4 text-xs font-bold text-white shadow-sm transition duration-200 hover:bg-black sm:flex">
                     <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
                         <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" />
                         <path d="m10 17 5-5-5-5" />
@@ -302,8 +310,7 @@
                 <a href="{{ route('home') }}"
                     class="flex items-center gap-3 rounded-xl bg-gray-100 px-4 py-3 text-sm font-bold text-gray-900">
 
-                    <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-width="1.8">
+                    <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
                         <path d="m3 10 9-7 9 7" />
                         <path d="M5 9v11h14V9" />
                         <path d="M9 20v-6h6v6" />
@@ -316,8 +323,7 @@
                 <a href="{{ route('all_products') }}"
                     class="flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold text-gray-600 transition hover:bg-gray-100 hover:text-gray-900">
 
-                    <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-width="1.8">
+                    <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
                         <path d="m3 7 3-3h12l3 3" />
                         <path d="M4 7h16v13H4z" />
                         <path d="M9 11h6" />
@@ -327,11 +333,10 @@
                 </a>
 
 
-                <a href="#"
+                <a href="{{ route('all_products') }}"
                     class="flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold text-gray-600 transition hover:bg-gray-100 hover:text-gray-900">
 
-                    <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-width="1.8">
+                    <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
                         <path d="M20 12V8l-8-5-8 5v4" />
                         <path d="M4 12l8 5 8-5" />
                         <path d="M12 17v5" />
@@ -344,8 +349,7 @@
                 <a href="{{ route('contact') }}"
                     class="flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold text-gray-600 transition hover:bg-gray-100 hover:text-gray-900">
 
-                    <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-width="1.8">
+                    <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
                         <path
                             d="M21 11.5a8.4 8.4 0 0 1-9 8.5 9.3 9.3 0 0 1-4.3-1.1L3 20l1.5-4.3A8.4 8.4 0 0 1 3 11.5 8.5 8.5 0 0 1 12 3a8.5 8.5 0 0 1 9 8.5Z" />
                         <path d="M8 12h.01" />
@@ -390,8 +394,7 @@
                         <button type="submit"
                             class="flex w-full items-center gap-3 rounded-xl px-3 py-3 text-sm font-semibold text-red-600 transition hover:bg-red-50 pr-4">
 
-                            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="1.8">
+                            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
                                 <path d="M10 17l5-5-5-5" />
                                 <path d="M15 12H3" />
                                 <path d="M21 19V5a2 2 0 0 0-2-2h-6" />
@@ -415,8 +418,7 @@
                     <a href="{{ route('login') }}"
                         class="flex items-center justify-center gap-2 rounded-xl bg-gray-900 px-4 py-3 text-sm font-bold text-white transition hover:bg-black">
 
-                        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="1.8">
+                        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
                             <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" />
                             <path d="m10 17 5-5-5-5" />
                             <path d="M15 12H3" />
@@ -438,7 +440,7 @@
 
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
 
         const button = document.getElementById('mobileMenuButton');
         const menu = document.getElementById('mobileMenu');
@@ -446,7 +448,7 @@
 
         if (!button || !menu || !icon) return;
 
-        button.addEventListener('click', function() {
+        button.addEventListener('click', function () {
 
             const isHidden = menu.classList.toggle('hidden');
 
