@@ -400,7 +400,7 @@
                             <div class="px-3 pt-3 sm:px-4 sm:pt-4">
 
                                 <div class="mb-1.5 text-[10px] font-medium text-gray-400 sm:text-xs">
-                                    {{ $item->category->name ?? 'بدون تصنيف' }}
+                                    {{ $item->category_id ?? 'بدون تصنيف' }}
                                 </div>
 
                                 <h3
