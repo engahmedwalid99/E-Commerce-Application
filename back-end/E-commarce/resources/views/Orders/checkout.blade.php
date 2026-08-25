@@ -24,6 +24,7 @@
 <body class="bg-gray-100 min-h-screen">
 
     <x-navbar />
+    <x-error />
 
     <main class="max-w-6xl mx-auto px-4 py-10">
 
@@ -177,11 +178,11 @@
                                     الإجمالي
                                 </span>
                                 @php
-                                    $total = 0;
+$total = 0;
 
-                                    foreach ($cart as $item) {
-                                        $total += $item['price'] * $item['quantity'];
-                                    }
+foreach ($cart as $item) {
+    $total += $item['price'] * $item['quantity'];
+}
                                 @endphp
 
                                 <span class="text-2xl font-bold text-blue-600">

@@ -65,13 +65,11 @@ class OrderController
                     ->first();
     
                 if (!$product) {
-                    throw new \Exception('المنتج غير موجود.');
+                    return redirect()->route('checkout')->with('error' , "المنتج غير موجود او تم حذفه.");
                 }
     
                 if ($product->stock < $item['quantity']) {
-                    throw new \Exception(
-                        "الكمية المطلوبة من {$product->name} غير متوفرة."
-                    );
+                    return redirect()->route('checkout')->with('error' , "الكميه المطلوبه من $product->name غير متوفره.");
                 }
     
                 $itemSubtotal = $item['price'] * $item['quantity'];
