@@ -244,120 +244,236 @@
                 مبيعًا</div>
         </div>
 
-        <div class="grid grid-cols-2 gap-4 sm:gap-5 lg:grid-cols-4">
+        <div class="grid grid-cols-1 gap-4 sm:gap-5 lg:grid-cols-4">
 
             @foreach ($products as $item)
-                <div
-                    class="group relative overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1.5">
+                @if ($item->status == 'hidden')
+                    <div
+                        class="group relative overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1.5">
 
-                    <a href="{{ route('product_details', $item->id) }}" class="block">
-
-                        <div class="relative aspect-square overflow-hidden bg-[#F7F3EA]">
-
-                            @if ($item->sale_price && $item->price > 0 && $item->sale_price < $item->price)
-                                <span
-                                    class="absolute right-3 top-3 z-20 rounded-full bg-red-500 px-2.5 py-1 text-[10px] font-bold text-white shadow-lg sm:px-3 sm:text-xs">
-                                    خصم
-                                    {{ round((($item->price - $item->sale_price) / $item->price) * 100) }}%
-                                </span>
-                            @endif
-
-                            @if ($item->image)
-                                <img src="{{ $item->image }}" alt="{{ $item->name }}" loading="lazy"
-                                    class="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-110">
-                            @else
-                                <div class="flex h-full w-full items-center justify-center">
-
-                                    <svg class="h-14 w-14 text-[#B8912B] opacity-50" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="1.4">
-
-                                        <rect x="3" y="8" width="18" height="12" rx="2" />
-
-                                        <path d="M8 8V6a4 4 0 0 1 8 0v2" />
-
-                                    </svg>
-
-                                </div>
-                            @endif
-
-                            <div
-                                class="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                            </div>
-
-                        </div>
-
-                        <div class="px-3 pt-3 sm:px-4 sm:pt-4">
-
-                            <div class="mb-1.5 text-[10px] font-medium text-gray-400 sm:text-xs">
-                                {{ $item->category->name ?? 'بدون تصنيف' }}
-                            </div>
-
-                            <h3
-                                class="mb-2 line-clamp-2 min-h-[40px] text-sm font-bold leading-5 text-[#172033] transition-colors duration-200 group-hover:text-[#B08A35] sm:text-[15px]">
-
-                                {{ $item->name }}
-
-                            </h3>
-
-                            <div class="my-3 h-px bg-gray-100"></div>
-
-                        </div>
-
-                    </a>
-
-                    <div class="px-3 pb-3 sm:px-4 sm:pb-4">
-
-                        <div class="flex items-center justify-between gap-2">
-
-                            <div class="flex min-w-0 flex-col">
+                            <div class="relative aspect-square overflow-hidden bg-[#F7F3EA]">
 
                                 @if ($item->sale_price && $item->price > 0 && $item->sale_price < $item->price)
-                                    <div class="flex items-center gap-1.5">
-
-                                        <span class="text-sm font-extrabold text-[#B08A35] sm:text-base">
-                                            {{ number_format($item->sale_price, 2) }}
-                                        </span>
-
-                                        <span class="text-[10px] text-gray-400 line-through sm:text-xs">
-                                            {{ number_format($item->price, 2) }}
-                                        </span>
-
-                                    </div>
-                                @else
-                                    <span class="text-sm font-extrabold text-[#B08A35] sm:text-base">
-                                        {{ number_format($item->price, 2) }}
+                                    <span class="absolute right-3 top-3 z-20 rounded-full bg-red-500 px-2.5 py-1 text-[10px] font-bold text-white shadow-lg sm:px-3 sm:text-xs">
+                                        موقوف حاليا ⛔
                                     </span>
                                 @endif
 
-                                <span class="mt-0.5 text-[9px] text-gray-400 sm:text-[10px]">
-                                    جنيه
-                                </span>
+                                @if ($item->image)
+                                    <img src="{{ $item->image }}" alt="{{ $item->name }}" loading="lazy"
+                                        class="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-110">
+                                @else
+                                    <div class="z-10 flex flex-col items-center justify-center h-full gap-3 text-[#b8912b]">
+
+                                        <div
+                                            class="flex h-24 w-24 animate-float items-center justify-center rounded-3xl bg-white/60">
+
+                                            <svg class="h-12 w-12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                stroke-width="1.4">
+
+                                                <rect x="3" y="8" width="18" height="12" rx="2" />
+
+                                                <path d="M8 8V6a4 4 0 0 1 8 0v2" />
+
+                                            </svg>
+
+                                        </div>
+
+                                        <span class="text-xs font-semibold">
+                                            لا توجد صورة
+                                        </span>
+
+                                    </div>
+                                @endif
+
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                                </div>
 
                             </div>
 
-                            <form action="{{ route('cart.add', $item->id) }}" method="POST">
+                            <div class="px-3 pt-3 sm:px-4 sm:pt-4">
 
-                                @csrf
+                                <div class="mb-1.5 text-[10px] font-medium text-gray-400 sm:text-xs">
+                                    {{ $item->category->name ?? 'بدون تصنيف' }}
+                                </div>
 
-                                <button type="submit" title="أضف إلى السلة"
-                                    class="flex h-9 w-9 items-center justify-center rounded-xl bg-[#172033] text-white shadow-sm transition-all duration-300 hover:scale-105 hover:bg-[#B08A35] hover:text-[#172033] hover:shadow-md active:scale-95 sm:h-10 sm:w-10">
+                                <h3
+                                    class="mb-2 line-clamp-2 min-h-[40px] text-sm font-bold leading-5 text-[#172033] transition-colors duration-200 group-hover:text-[#B08A35] sm:text-[15px]">
 
-                                    <svg class="h-4 w-4 sm:h-[18px] sm:w-[18px]" viewBox="0 0 24 24" fill="none"
-                                        stroke="currentColor" stroke-width="2">
+                                    {{ $item->name }}
 
-                                        <path d="M12 5v14M5 12h14" />
+                                </h3>
 
-                                    </svg>
+                                <div class="my-3 h-px bg-gray-100"></div>
 
-                                </button>
+                            </div>
 
-                            </form>
+                        <div class="px-3 pb-3 sm:px-4 sm:pb-4">
+
+                            <div class="flex items-center justify-between gap-2">
+
+                                <div class="flex min-w-0 flex-col">
+
+                                    @if ($item->sale_price && $item->price > 0 && $item->sale_price < $item->price)
+                                        <div class="flex items-center gap-1.5">
+
+                                            <span class="text-sm font-extrabold text-[#B08A35] sm:text-base">
+                                                {{ number_format($item->sale_price, 2) }}
+                                            </span>
+
+                                            <span class="text-[10px] text-gray-400 line-through sm:text-xs">
+                                                {{ number_format($item->price, 2) }}
+                                            </span>
+
+                                        </div>
+                                    @else
+                                        <span class="text-sm font-extrabold text-[#B08A35] sm:text-base">
+                                            {{ number_format($item->price, 2) }}
+                                        </span>
+                                    @endif
+
+                                    <span class="mt-0.5 text-[9px] text-gray-400 sm:text-[10px]">
+                                        جنيه
+                                    </span>
+
+                                </div>
+
+                                <div>
+                                    <span class="text-red-500">
+                                        مغلق ⛔
+                                    </span>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                @else
+                    <div
+                        class="group relative overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1.5">
+
+                        <a href="{{ route('product_details', $item->id) }}" class="block">
+
+                            <div class="relative aspect-square overflow-hidden bg-[#F7F3EA]">
+
+                                @if ($item->sale_price && $item->price > 0 && $item->sale_price < $item->price)
+                                    <span
+                                        class="absolute right-3 top-3 z-20 rounded-full bg-green-500 px-2.5 py-1 text-[10px] font-bold text-white shadow-lg sm:px-3 sm:text-xs">
+                                        خصم
+                                        {{ round((($item->price - $item->sale_price) / $item->price) * 100) }}%
+                                    </span>
+                                @endif
+
+                                @if ($item->image)
+                                    <img src="{{ $item->image }}" alt="{{ $item->name }}" loading="lazy"
+                                        class="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-110">
+                                @else
+                                    <div class="z-10 flex flex-col items-center justify-center h-full gap-3 text-[#b8912b]">
+
+                                        <div
+                                            class="flex h-24 w-24 animate-float items-center justify-center rounded-3xl bg-white/60">
+
+                                            <svg class="h-12 w-12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                stroke-width="1.4">
+
+                                                <rect x="3" y="8" width="18" height="12" rx="2" />
+
+                                                <path d="M8 8V6a4 4 0 0 1 8 0v2" />
+
+                                            </svg>
+
+                                        </div>
+
+                                        <span class="text-xs font-semibold">
+                                            لا توجد صورة
+                                        </span>
+
+                                    </div>
+                                @endif
+
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                                </div>
+
+                            </div>
+
+                            <div class="px-3 pt-3 sm:px-4 sm:pt-4">
+
+                                <div class="mb-1.5 text-[10px] font-medium text-gray-400 sm:text-xs">
+                                    {{ $item->category->name ?? 'بدون تصنيف' }}
+                                </div>
+
+                                <h3
+                                    class="mb-2 line-clamp-2 min-h-[40px] text-sm font-bold leading-5 text-[#172033] transition-colors duration-200 group-hover:text-[#B08A35] sm:text-[15px]">
+
+                                    {{ $item->name }}
+
+                                </h3>
+
+                                <div class="my-3 h-px bg-gray-100"></div>
+
+                            </div>
+
+                        </a>
+
+                        <div class="px-3 pb-3 sm:px-4 sm:pb-4">
+
+                            <div class="flex items-center justify-between gap-2">
+
+                                <div class="flex min-w-0 flex-col">
+
+                                    @if ($item->sale_price && $item->price > 0 && $item->sale_price < $item->price)
+                                        <div class="flex items-center gap-1.5">
+
+                                            <span class="text-sm font-extrabold text-[#B08A35] sm:text-base">
+                                                {{ number_format($item->sale_price, 2) }}
+                                            </span>
+
+                                            <span class="text-[10px] text-gray-400 line-through sm:text-xs">
+                                                {{ number_format($item->price, 2) }}
+                                            </span>
+
+                                        </div>
+                                    @else
+                                        <span class="text-sm font-extrabold text-[#B08A35] sm:text-base">
+                                            {{ number_format($item->price, 2) }}
+                                        </span>
+                                    @endif
+
+                                    <span class="mt-0.5 text-[9px] text-gray-400 sm:text-[10px]">
+                                        جنيه
+                                    </span>
+
+                                </div>
+
+                                <form action="{{ route('cart.add', $item->id) }}" method="POST">
+
+                                    @csrf
+
+                                    <button type="submit" title="إضافة إلى السلة"
+                                        class="group/cart relative flex h-12 w-12 items-center justify-center overflow-hidden rounded-2xl bg-[#172033] text-white shadow-lg transition-all duration-300 hover:scale-105 hover:bg-[#b8912b] hover:shadow-xl active:scale-95">
+
+                                        <span
+                                            class="absolute inset-0 translate-y-full bg-white/10 transition-transform duration-300 group-hover/cart:translate-y-0"></span>
+
+                                        <svg class="relative z-10 h-5 w-5 transition-transform duration-300 group-hover/cart:scale-110"
+                                            fill="none" stroke="currentColor" viewBox="0 0 24 24">
+
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"
+                                                d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2 2h12m-9 4a1 1 0 100-2 1 1 0 000 2zm8 0a1 1 0 100-2 1 1 0 000 2z" />
+
+                                        </svg>
+
+                                    </button>
+
+                                </form>
+
+                            </div>
 
                         </div>
 
                     </div>
-
-                </div>
+                @endif
             @endforeach
 
         </div>

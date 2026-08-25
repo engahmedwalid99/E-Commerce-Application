@@ -320,7 +320,7 @@
 
                                             @if ($hasSale)
                                                 <div
-                                                    class="absolute right-4 top-4 z-20 overflow-hidden rounded-full bg-[#b8912b] px-3 py-1.5 text-xs font-bold text-white shadow-lg">
+                                                    class="absolute right-4 top-4 z-20 overflow-hidden rounded-full bg-green-500 px-3 py-1.5 text-xs font-bold text-white shadow-lg">
 
                                                     <span class="relative z-10">
                                                         خصم {{ $discount }}%

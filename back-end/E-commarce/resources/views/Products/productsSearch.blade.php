@@ -162,7 +162,7 @@
                         $displayPrice = $hasSale ? $salePrice : $price;
                     @endphp
 
-                    @if ($item->status != 'hidden')
+                    @if ($item->status === 'hidden')
                         <div class="group relative animate-fadeUp" style="animation-delay: {{ $index * 80 }}ms;">
 
                             <div
@@ -174,16 +174,174 @@
                                 class="relative overflow-hidden rounded-[24px] border border-[#eee8da] bg-white shadow-sm transition-all duration-500 ease-out group-hover:-translate-y-2">
 
 
+
+                                <div class="relative flex h-[290px] items-center justify-center overflow-hidden bg-[#f3ecdd]">
+
+                                    <div
+                                        class="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-white/30 transition duration-700 group-hover:scale-150">
+                                    </div>
+
+                                    <div
+                                        class="absolute -bottom-16 -left-10 h-36 w-36 rounded-full bg-[#b8912b]/5 transition duration-700 group-hover:scale-125">
+                                    </div>
+
+
+                                    @if ($hasSale)
+                                        <div
+                                            class="absolute right-4 top-4 z-20 overflow-hidden rounded-full bg-red-500 px-3 py-1.5 text-xs font-bold text-white shadow-lg">
+
+                                            <span class="relative z-10">
+                                                موقوف حاليا ⛔
+                                            </span>
+
+                                        </div>
+                                    @endif
+
+
+                                    @if ($item->image)
+                                        <img src="{{ $item->image }}" alt="{{ $item->name }}" loading="lazy"
+                                            class="relative z-10 h-full w-full object-contain p-6 transition duration-700 ease-out group-hover:scale-110">
+                                    @else
+                                        <div class="relative z-10 flex flex-col items-center gap-3 text-[#b8912b]">
+
+                                            <div
+                                                class="flex h-24 w-24 animate-float items-center justify-center rounded-3xl bg-white/60">
+
+                                                <svg class="h-12 w-12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                    stroke-width="1.4">
+
+                                                    <rect x="3" y="8" width="18" height="12" rx="2" />
+
+                                                    <path d="M8 8V6a4 4 0 0 1 8 0v2" />
+
+                                                </svg>
+
+                                            </div>
+
+                                            <span class="text-xs font-semibold">
+                                                لا توجد صورة
+                                            </span>
+
+                                        </div>
+                                    @endif
+
+
+                                    <div
+                                        class="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/10 to-transparent opacity-0 transition duration-500 group-hover:opacity-100">
+                                    </div>
+
+
+                                    <div
+                                        class="pointer-events-none absolute inset-y-0 -left-full z-30 w-1/2 -skew-x-12 bg-gradient-to-r from-transparent via-white/30 to-transparent transition-transform duration-1000 group-hover:left-full">
+                                    </div>
+
+                                </div>
+
+
+                                <div class="p-5">
+
+
+                                    <div class="mb-2 flex items-center gap-2">
+
+                                        <span class="h-1.5 w-1.5 rounded-full bg-[#b8912b]"></span>
+
+                                        <span class="text-xs font-bold text-[#b8912b]">
+                                            {{ $item->category_id }}
+                                        </span>
+
+                                    </div>
+
+                                    <h3
+                                        class="min-h-[52px] text-base font-extrabold leading-7 text-[#172033] transition-colors duration-300 group-hover:text-[#b8912b]">
+                                        {{ $item->name }}
+                                    </h3>
+
+
+                                    <div class="my-4 h-px bg-[#eee8da]"></div>
+
+
+                                    <div class="flex items-center justify-between gap-3">
+
+                                        <div>
+
+                                            <p class="mb-1 text-[11px] text-gray-400">
+                                                السعر
+                                            </p>
+
+                                            <div class="flex items-baseline gap-1">
+
+                                                <span class="text-xl font-extrabold text-[#172033]">
+                                                    {{ number_format($displayPrice, 2) }}
+                                                </span>
+
+                                                <span class="text-[11px] font-semibold text-gray-400">
+                                                    EGP
+                                                </span>
+
+                                            </div>
+
+
+                                            @if ($hasSale)
+                                                <div class="mt-1 flex items-center gap-2">
+
+                                                    <span class="text-xs text-gray-400 line-through">
+                                                        {{ number_format($item->price, 2) }}
+                                                        EGP
+                                                    </span>
+
+                                                    <span class="text-[10px] font-bold text-green-600">
+                                                        وفر {{ $discount }}%
+                                                    </span>
+
+                                                </div>
+                                            @endif
+
+                                        </div>
+
+                                        <div>
+                                            <span class="text-red-500">
+                                                مغلق ⛔
+                                            </span>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    @else
+                        <div class="group relative animate-fadeUp" style="animation-delay: {{ $index * 80 }}ms;">
+
+                            <div
+                                class="absolute -inset-1 rounded-[26px] bg-gradient-to-r from-[#b8912b]/20 via-transparent to-[#172033]/10 opacity-0 blur-xl transition duration-500 group-hover:opacity-100">
+                            </div>
+
+
+                            <div
+                                class="relative overflow-hidden rounded-[24px] border border-[#eee8da] bg-white shadow-sm transition-all duration-500 ease-out group-hover:-translate-y-2">
+
                                 <a href="{{ route('product_details', $item->id) }}" class="relative block">
 
                                     <div class="relative flex h-[290px] items-center justify-center overflow-hidden bg-[#f3ecdd]">
 
+                                        <div
+                                            class="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-white/30 transition duration-700 group-hover:scale-150">
+                                        </div>
+
+                                        <div
+                                            class="absolute -bottom-16 -left-10 h-36 w-36 rounded-full bg-[#b8912b]/5 transition duration-700 group-hover:scale-125">
+                                        </div>
+
 
                                         @if ($hasSale)
                                             <div
-                                                class="absolute right-4 top-4 z-20 rounded-full bg-[#b8912b] px-3 py-1.5 text-xs font-bold text-white shadow-lg">
+                                                class="absolute right-4 top-4 z-20 overflow-hidden rounded-full bg-green-500 px-3 py-1.5 text-xs font-bold text-white shadow-lg">
 
-                                                خصم {{ $discount }}%
+                                                <span class="relative z-10">
+                                                    خصم {{ $discount }}%
+                                                </span>
 
                                             </div>
                                         @endif
@@ -193,9 +351,10 @@
                                             <img src="{{ $item->image }}" alt="{{ $item->name }}" loading="lazy"
                                                 class="relative z-10 h-full w-full object-contain p-6 transition duration-700 ease-out group-hover:scale-110">
                                         @else
-                                            <div class="flex flex-col items-center gap-3 text-[#b8912b]">
+                                            <div class="relative z-10 flex flex-col items-center gap-3 text-[#b8912b]">
 
-                                                <div class="flex h-24 w-24 items-center justify-center rounded-3xl bg-white/60">
+                                                <div
+                                                    class="flex h-24 w-24 animate-float items-center justify-center rounded-3xl bg-white/60">
 
                                                     <svg class="h-12 w-12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                                         stroke-width="1.4">
@@ -217,7 +376,12 @@
 
 
                                         <div
-                                            class="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent opacity-0 transition duration-500 group-hover:opacity-100">
+                                            class="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/10 to-transparent opacity-0 transition duration-500 group-hover:opacity-100">
+                                        </div>
+
+
+                                        <div
+                                            class="pointer-events-none absolute inset-y-0 -left-full z-30 w-1/2 -skew-x-12 bg-gradient-to-r from-transparent via-white/30 to-transparent transition-transform duration-1000 group-hover:left-full">
                                         </div>
 
                                     </div>
@@ -230,13 +394,10 @@
 
                                     <div class="mb-2 flex items-center gap-2">
 
-                                        <span class="h-1.5 w-1.5 rounded-full bg-[#b8912b]">
-                                        </span>
+                                        <span class="h-1.5 w-1.5 rounded-full bg-[#b8912b]"></span>
 
                                         <span class="text-xs font-bold text-[#b8912b]">
-
                                             {{ $item->category_id }}
-
                                         </span>
 
                                     </div>
@@ -246,9 +407,7 @@
 
                                         <h3
                                             class="min-h-[52px] text-base font-extrabold leading-7 text-[#172033] transition-colors duration-300 group-hover:text-[#b8912b]">
-
                                             {{ $item->name }}
-
                                         </h3>
 
                                     </a>
@@ -268,15 +427,11 @@
                                             <div class="flex items-baseline gap-1">
 
                                                 <span class="text-xl font-extrabold text-[#172033]">
-
                                                     {{ number_format($displayPrice, 2) }}
-
                                                 </span>
 
                                                 <span class="text-[11px] font-semibold text-gray-400">
-
                                                     EGP
-
                                                 </span>
 
                                             </div>
@@ -286,16 +441,12 @@
                                                 <div class="mt-1 flex items-center gap-2">
 
                                                     <span class="text-xs text-gray-400 line-through">
-
-                                                        {{ number_format($price, 2) }}
+                                                        {{ number_format($item->price, 2) }}
                                                         EGP
-
                                                     </span>
 
                                                     <span class="text-[10px] font-bold text-green-600">
-
                                                         وفر {{ $discount }}%
-
                                                     </span>
 
                                                 </div>
@@ -309,9 +460,13 @@
                                             @csrf
 
                                             <button type="submit" title="إضافة إلى السلة"
-                                                class="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#172033] text-white shadow-lg transition-all duration-300 hover:scale-105 hover:bg-[#b8912b] active:scale-95">
+                                                class="group/cart relative flex h-12 w-12 items-center justify-center overflow-hidden rounded-2xl bg-[#172033] text-white shadow-lg transition-all duration-300 hover:scale-105 hover:bg-[#b8912b] hover:shadow-xl active:scale-95">
 
-                                                <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <span
+                                                    class="absolute inset-0 translate-y-full bg-white/10 transition-transform duration-300 group-hover/cart:translate-y-0"></span>
+
+                                                <svg class="relative z-10 h-5 w-5 transition-transform duration-300 group-hover/cart:scale-110"
+                                                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
 
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"
                                                         d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2 2h12m-9 4a1 1 0 100-2 1 1 0 000 2zm8 0a1 1 0 100-2 1 1 0 000 2z" />

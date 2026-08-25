@@ -50,7 +50,7 @@ class ProductController extends Controller
 
             'sku' => trim($data['sku']),
 
-            'category_id' => $data['category_id'],
+            'category_id' => $request->category_id,
 
             'status' => $data['status'],
 
