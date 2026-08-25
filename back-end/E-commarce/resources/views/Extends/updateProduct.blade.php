@@ -30,7 +30,7 @@
                 </p>
             </div>
 
-            <x-success/>
+            <x-success />
 
             <span class="rounded-full bg-amber-50 px-3 py-1 text-[11px] font-extrabold text-amber-700">
                 تعديل المنتج
@@ -44,10 +44,9 @@
             <form
                 method="POST"
                 enctype="multipart/form-data"
-                action="{{ route('update_product', $product->id) }}">
+                action="{{ route('save_update_product', $product->id) }}">
                 @csrf
                 <div class="grid grid-cols-1 gap-5 md:grid-cols-2">
-
 
                     <div class="md:col-span-2">
 

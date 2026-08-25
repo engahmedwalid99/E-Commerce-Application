@@ -53,7 +53,7 @@ class ProductRequest extends FormRequest
                 'min:0',
             ],
 
-            'sku' => 'required|string|max:100|unique:products,sku,' . $this->route('id'),
+            'sku' => 'required|string|max:100|unique:products,sku,' . $this->id,
 
             'status' => [
                 'required',
@@ -61,11 +61,6 @@ class ProductRequest extends FormRequest
             ],
 
             'is_featured' => [
-                'required',
-                'boolean',
-            ],
-
-            'category_id' => [
                 'required',
             ],
 

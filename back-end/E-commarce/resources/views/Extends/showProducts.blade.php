@@ -14,12 +14,12 @@
 
 @section('products')
     <div class="mt-6 overflow-hidden rounded-2xl border border-line bg-white shadow-soft" id="products">
+        <x-success/>
         <div class="flex flex-wrap items-center justify-between gap-3 border-b border-line px-5 py-4 sm:px-6">
             <div>
                 <h2 class="text-[15.5px] font-extrabold">المنتجات</h2>
                 <p class="mt-0.5 text-[12px] text-muted">إدارة وتعديل جميع منتجات المتجر</p>
             </div>
-
         </div>
 
         <div class="overflow-x-auto">

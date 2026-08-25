@@ -86,7 +86,7 @@ class ProductController extends Controller
     {
         $data = $request->validated();
 
-        $product = Product::findOrFail($request->id);
+        $product = Product::find($request->id);
 
         $imageUrl = $product->image;
 
@@ -100,25 +100,23 @@ class ProductController extends Controller
             )->getSecurePath();
         }
 
-        $product->name = trim($data['name']);
+        $product->name = $request->name;
 
-        $product->description = isset($data['description']) ? trim($data['description']) : null;
+        $product->description = $request->description;
 
-        $product->brand = isset($data['brand']) ? trim($data['brand']) : null;
+        $product->brand = $request->brand;
 
-        $product->price = $data['price'];
+        $product->price = $request->price;
 
-        $product->sale_price = $data['sale_price'] ?? null;
+        $product->sale_price = $request->sale_price;
 
-        $product->stock = $data['stock'];
+        $product->stock = $request->stock;
 
-        $product->sku = trim($data['sku']);
+        $product->sku = $request->sku;
 
-        $product->category_id = $data['category_id'];
+        $product->status = $request->status;
 
-        $product->status = $data['status'];
-
-        $product->is_featured = $data['is_featured'];
+        $product->is_featured = $request->is_featured;
 
         $product->image = $imageUrl;
 

@@ -86,7 +86,7 @@ Route::middleware(['auth', 'status'])->group(function () {
         Route::post('/store-product', [ProductController::class, 'store'])->name('store_product');
         Route::get('/show-products', [ProductController::class, 'show_products'])->name('show_products');
         Route::get('update-product/{id}', [ProductController::class, 'show_update_product'])->name('show_update_product');
-        Route::post('update-product/{id}', [ProductController::class, 'update_product'])->name('update_product');
+        Route::post('update-product/{id}', [ProductController::class, 'update_product'])->name('save_update_product');
         Route::post('delet-product/{id}', [ProductController::class, 'delet_product'])->name('delet_product');
 
         Route::get('/orders', [ordersController::class, 'index'])->name('admin.orders.index');
