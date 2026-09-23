@@ -86,11 +86,6 @@
                             <path d="m13 6 6 6-6 6" />
                         </svg>
                     </a>
-
-                    <a href="#"
-                        class="inline-flex items-center justify-center border-[1.5px] border-white/30 text-white px-7 py-3.5 rounded-xl font-bold text-sm hover:border-white transition-colors">
-                        العروض
-                    </a>
                 </div>
             </div>
         </div>
