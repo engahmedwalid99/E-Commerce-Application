@@ -63,7 +63,7 @@
             <div class="flex flex-col mt-[70px] items-center text-center gap-5 max-w-2xl mx-auto">
                 <span
                     class="inline-flex items-center gap-2 text-xs sm:text-[13px] text-gold bg-gold/15 border border-gold/35 px-4 py-1.5 rounded-full">
-                    ✦ اختار اللي يناسبك
+                     اختار اللي يناسبك
                 </span>
 
                 <h1 class="font-extrabold leading-[1.3] text-3xl sm:text-4xl md:text-5xl">
