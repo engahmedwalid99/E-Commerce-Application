@@ -23,7 +23,7 @@ class sendNotificationRequest extends FormRequest
                 'required',
                 'string',
                 'min:10',
-                'max:255'
+                'max:1000'
             ]
         ];
     }
@@ -38,7 +38,7 @@ class sendNotificationRequest extends FormRequest
             'description.required' => 'وصف الإشعار مطلوب.',
             'description.string'   => 'وصف الإشعار يجب أن يكون نصًا.',
             'description.min'      => 'وصف الإشعار يجب ألا يقل عن 10 أحرف.',
-            'description.max'      => 'وصف الإشعار يجب ألا يزيد عن 255 حرفًا.',
+            'description.max'      => 'وصف الإشعار يجب ألا يزيد عن 1000 حرفًا.',
         ];
     }
 }
